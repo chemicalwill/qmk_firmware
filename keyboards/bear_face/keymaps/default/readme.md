@@ -10,5 +10,5 @@ This layout replaces the stock layout on the Vortex Race 3.
 - a combined function layer that mimics the sublegends on the stock caps (regardless of layout)
     * 'Reset' will put the keyboard into DFU mode
     * 'APP' sends 'KC_APP'
-    * set base layer toggles for Qwerty, Colemak, and Dvorak layouts (will persist after boot)
+    * set base layer toggles for QWERTY, COLEMAK, and DVORAK layouts (will persist after reboot)
     
