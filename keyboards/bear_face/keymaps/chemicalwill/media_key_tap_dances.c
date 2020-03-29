@@ -7,7 +7,10 @@ typedef struct {
 //Tap Dance states
 enum {
   SINGLE_TAP = 1,
-  SINGLE_HOLD = 2
+  SINGLE_HOLD = 2,
+  DOUBLE_TAP = 3,         //key is tapped twice uninterrupted
+  DOUBLE_HOLD = 4,        //key is tapped twice and held
+  DOUBLE_SINGLE_TAP = 5   //key is tapped twice and interrupted
 };
 
 //Tap Dance enums
@@ -44,12 +47,35 @@ void mnxt_reset (qk_tap_dance_state_t *state, void *user_data);
 
 //Determine tap state
 int cur_dance (qk_tap_dance_state_t *state) {
-  if (state->interrupted || !state->pressed) {
-    return SINGLE_TAP;
-  } else {
-    //key has not been interrupted, but they key is still held. Means you want to send a 'HOLD'
-    return SINGLE_HOLD;
+  if (state->count == 1) {
+    //If count = 1, and it has been interrupted - it doesn't matter if it is pressed or not: Send SINGLE_TAP
+    if (state->interrupted) {
+      //     if (!state->pressed) return SINGLE_TAP;
+      //need "permissive hold" here.
+      //     else return SINGLE_HOLD;
+      //If the interrupting key is released before the tap-dance key, then it is a single HOLD
+      //      However, if the tap-dance key is released first, then it is a single TAP
+      //      But how to get access to the state of the interrupting key???? 
+      return SINGLE_TAP;
+    } else {
+      if (!state->pressed)
+        return SINGLE_TAP;
+      else
+        return SINGLE_HOLD;
+    }
   }
+    //If count = 2, and it has been interrupted - assume that user is trying to type the letter associated
+  //  with single tap.
+  else if (state->count == 2) {
+    if (state->interrupted)
+      return DOUBLE_SINGLE_TAP;   //key is tapped twice, but interrupted right after
+    else if (state->pressed)
+      return DOUBLE_HOLD;
+    else
+      return DOUBLE_TAP;          //key is tapped twice, but is NOT interrupted
+  }
+  else
+    return 6; //return n+1, where n is yoru number of tap dance states
 };
 
 //instance 'xtap' for the 'mute/F1' tap dance
@@ -94,6 +120,18 @@ void vold_finished (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       register_code(KC_F2);
       break;
+    case DOUBLE_TAP:
+      tap_code(KC_VOLD);
+      register_code(KC_VOLD);
+      break;
+    case DOUBLE_HOLD:
+      tap_code(KC_VOLD);
+      register_code(KC_VOLD);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      tap_code(KC_VOLD);
+      register_code(KC_VOLD);
+      break;
   }
 }
 void vold_reset (qk_tap_dance_state_t *state, void *user_data) {
@@ -103,6 +141,15 @@ void vold_reset (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case SINGLE_HOLD:
       unregister_code(KC_F2);
+      break;
+    case DOUBLE_TAP:
+      unregister_code(KC_VOLD);
+      break;
+    case DOUBLE_HOLD:
+      unregister_code(KC_VOLD);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      unregister_code(KC_VOLD);
       break;
   }
   voldtap_state.state = 0;
@@ -122,6 +169,18 @@ void volu_finished (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       register_code(KC_F3);
       break;
+    case DOUBLE_TAP:
+      tap_code(KC_VOLU);
+      register_code(KC_VOLU);
+      break;
+    case DOUBLE_HOLD:
+      tap_code(KC_VOLU);
+      register_code(KC_VOLU);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      tap_code(KC_VOLU);
+      register_code(KC_VOLU);
+      break;
   }
 }
 void volu_reset (qk_tap_dance_state_t *state, void *user_data) {
@@ -131,6 +190,15 @@ void volu_reset (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case SINGLE_HOLD:
       unregister_code(KC_F3);
+      break;
+    case DOUBLE_TAP:
+      unregister_code(KC_VOLU);
+      break;
+    case DOUBLE_HOLD:
+      unregister_code(KC_VOLU);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      unregister_code(KC_VOLU);
       break;
   }
   volutap_state.state = 0;
