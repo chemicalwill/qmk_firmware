@@ -10,7 +10,7 @@ enum {
   SINGLE_HOLD = 2,
   DOUBLE_TAP = 3,         //key is tapped twice uninterrupted
   DOUBLE_HOLD = 4,        //key is tapped twice and held
-  DOUBLE_SINGLE_TAP = 5   //key is tapped twice and interrupted
+  DOUBLE_SINGLE_TAP = 5,  //key is tapped twice and then interrupted
 };
 
 //Tap Dance enums
@@ -118,19 +118,14 @@ void vold_finished (qk_tap_dance_state_t *state, void *user_data) {
       register_code(KC_VOLD);
       break;
     case SINGLE_HOLD:
-      register_code(KC_F2);
+      register_code(KC_VOLD);
       break;
     case DOUBLE_TAP:
       tap_code(KC_VOLD);
       register_code(KC_VOLD);
       break;
     case DOUBLE_HOLD:
-      tap_code(KC_VOLD);
-      register_code(KC_VOLD);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      tap_code(KC_VOLD);
-      register_code(KC_VOLD);
+      register_code(KC_F2);
       break;
   }
 }
@@ -140,16 +135,13 @@ void vold_reset (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_VOLD);
       break;
     case SINGLE_HOLD:
-      unregister_code(KC_F2);
+      unregister_code(KC_VOLD);
       break;
     case DOUBLE_TAP:
       unregister_code(KC_VOLD);
       break;
     case DOUBLE_HOLD:
-      unregister_code(KC_VOLD);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      unregister_code(KC_VOLD);
+      unregister_code(KC_F2);
       break;
   }
   voldtap_state.state = 0;
@@ -167,19 +159,14 @@ void volu_finished (qk_tap_dance_state_t *state, void *user_data) {
       register_code(KC_VOLU);
       break;
     case SINGLE_HOLD:
-      register_code(KC_F3);
+      register_code(KC_VOLU);
       break;
     case DOUBLE_TAP:
       tap_code(KC_VOLU);
       register_code(KC_VOLU);
       break;
     case DOUBLE_HOLD:
-      tap_code(KC_VOLU);
-      register_code(KC_VOLU);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      tap_code(KC_VOLU);
-      register_code(KC_VOLU);
+      register_code(KC_F3);
       break;
   }
 }
@@ -189,16 +176,13 @@ void volu_reset (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_VOLU);
       break;
     case SINGLE_HOLD:
-      unregister_code(KC_F3);
+      unregister_code(KC_VOLU);
       break;
     case DOUBLE_TAP:
       unregister_code(KC_VOLU);
       break;
     case DOUBLE_HOLD:
-      unregister_code(KC_VOLU);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      unregister_code(KC_VOLU);
+      unregister_code(KC_F3);
       break;
   }
   volutap_state.state = 0;
@@ -298,7 +282,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [MNXT_F6] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mnxt_finished, mnxt_reset)
 };
 
-//Tap Dance declarations
 #define MUTE_F1 TD(MUTE_F1)
 #define VOLD_F2 TD(VOLD_F2)
 #define VOLU_F3 TD(VOLU_F3)
