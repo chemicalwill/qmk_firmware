@@ -58,5 +58,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PIN_WS2812      15
 #define WS2812_SPI SPID2
 
+/*
+ * Feature disable options
+ *  These options are also useful to firmware size reduction.
+ */
+
+/* disable debug print */
+//#define NO_DEBUG
+
+/* disable print */
+//#define NO_PRINT
+
+/* disable action features */
+//#define NO_ACTION_LAYER
+//#define NO_ACTION_TAPPING
+//#define NO_ACTION_ONESHOT
+//#define NO_ACTION_MACRO
+//#define NO_ACTION_FUNCTION
+
 //Features I added
 #define ONESHOT_TIMEOUT 5000    //Time (in ms) before the one shot key is released
