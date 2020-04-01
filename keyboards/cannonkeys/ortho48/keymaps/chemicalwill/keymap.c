@@ -6,13 +6,15 @@ make cannonkeys/ortho48:chemicalwill:flash
 
 #include QMK_KEYBOARD_H
 
-#define _QWERTY 0
-#define _WORKTD 1
-#define _LOWER 2
-#define _RAISE 3
-#define _FN 4
-#define _META 5
-#define _CODE 6
+enum layers {
+  _QWERTY,
+  _WORKTD,
+  _LOWER,
+  _RAISE,
+  _FN,
+  _META,
+  _CODE
+};
 
 //layer declarations for keymap cleanness
 #define LOWER MO(_LOWER)
