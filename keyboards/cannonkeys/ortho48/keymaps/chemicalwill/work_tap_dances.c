@@ -4,7 +4,7 @@ typedef struct {
   int state;
 } xtap;
 
-//Tap dance states
+//Tap dance states enum
 enum {
   SINGLE_TAP = 1,
   SINGLE_HOLD = 2,
@@ -21,24 +21,24 @@ enum {
 
 //Tap dance declarations
 enum {
-  A_ALTA = 0,
-  D_MACROS = 1,
-  E_ALTE = 2,
-  ENT_TG1 = 3,
-  ESC_UVOM = 4,
-  M_ALTM = 5,
-  MINS_SLSH = 6,
-  N_NOTSIG = 7,
-  O_ALTO = 8,
-  P_0LABL = 9,
-  PLUS_ASTR = 10,
-  R_REHABDC = 11,
-  S_ALTS = 12,
-  T_ALTT = 13,
-  U_ALTU = 14,
-  V_MACROS = 15,
-  WK_META = 16,
-  X_COMMS = 17  
+  A_ALTA,
+  D_MACROS,
+  E_ALTE,
+  ESC_UVOM,
+  F_PACU,
+  M_ALTM,
+  MINS_SLSH,
+  N_NOTSIG,
+  O_ALTO,
+  P_0LABL,
+  PLUS_ASTR,
+  R_REHABDC,
+  S_ALTS,
+  T_ALTT,
+  U_ALTU,
+  V_MACROS,
+  WK_META,
+  X_COMMS  
 };
 
 //Function associated with all tap dances
@@ -47,40 +47,58 @@ int cur_dance (qk_tap_dance_state_t *state);
 //Functions associated with individual tap dances
 void a_finished (qk_tap_dance_state_t *state, void *user_data);
 void a_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void c_finished (qk_tap_dance_state_t *state, void *user_data);
 void c_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void d_finished (qk_tap_dance_state_t *state, void *user_data);
 void d_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void e_finished (qk_tap_dance_state_t *state, void *user_data);
 void e_reset (qk_tap_dance_state_t *state, void *user_data);
-//void enter_finished (qk_tap_dance_state_t *state, void *user_data);
-//void enter_reset (qk_tap_dance_state_t *state, void *user_data);
+
+void f_finished (qk_tap_dance_state_t *state, void *user_data);
+void f_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void esc_finished (qk_tap_dance_state_t *state, void *user_data);
 void esc_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void m_finished (qk_tap_dance_state_t *state, void *user_data);
 void m_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void mins_finished (qk_tap_dance_state_t *state, void *user_data);
 void mins_reset  (qk_tap_dance_state_t *state, void *user_data);
+
 void n_finished (qk_tap_dance_state_t *state, void *user_data);
 void n_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void o_finished (qk_tap_dance_state_t *state, void *user_data);
 void o_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void p_finished (qk_tap_dance_state_t *state, void *user_data);
 void p_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void plus_finished (qk_tap_dance_state_t *state, void *user_data);
 void plus_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void r_finished (qk_tap_dance_state_t *state, void *user_data);
 void r_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void s_finished (qk_tap_dance_state_t *state, void *user_data);
 void s_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void t_finished (qk_tap_dance_state_t *state, void *user_data);
 void t_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void u_finished (qk_tap_dance_state_t *state, void *user_data);
 void u_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void v_finished (qk_tap_dance_state_t *state, void *user_data);
 void v_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void wk_finished (qk_tap_dance_state_t *state, void *user_data);
 void wk_reset (qk_tap_dance_state_t *state, void *user_data);
+
 void x_finished (qk_tap_dance_state_t *state, void *user_data);
 void x_reset (qk_tap_dance_state_t *state, void *user_data);
 
@@ -299,40 +317,33 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
   }
   etap_state.state = 0;
 }
-/*
-//Instance 'xtap' for the Enter/layer toggle tap dance
-static xtap entertap_state = {
+
+//Instance 'xtap' for the F/PACU tap dance
+static xtap ftap_state = {
   .is_press_action = true,
   .state = 0
 };
-void enter_finished (qk_tap_dance_state_t *state, void *user_data) {
-  entertap_state.state = cur_dance(state);
-  switch(entertap_state.state) {
+void f_finished (qk_tap_dance_state_t *state, void *user_data) {
+  ftap_state.state = cur_dance(state);
+  switch (ftap_state.state) {
     case SINGLE_TAP:
-      if (layer_state_is(_META)) {
-        tap_code(KC_ENTER);
-        layer_off(_META);
-      } else {
-        register_code(KC_ENTER);
-        break;
-      }
+      register_code(KC_F);
       break;
     case SINGLE_HOLD:
-      register_code(KC_ENTER);
+      //PACUFENT macro
+      SEND_STRING("prn pacu use only");
       break;
   }
 }
-void enter_reset (qk_tap_dance_state_t *state, void *user_data) {
-  switch (entertap_state.state) {
+void f_reset (qk_tap_dance_state_t *state, void *user_data) {
+  switch (ftap_state.state) {
     case SINGLE_TAP:
-      unregister_code(KC_ENTER);
-      break;
-    case SINGLE_HOLD:
-      unregister_code(KC_ENTER);
+      unregister_code(KC_F);
       break;
   }
+  ftap_state.state = 0;
 }
-*/
+
 //Instance 'xtap' for the ESC/UVOM tap dance
 static xtap esctap_state = {
   .is_press_action = true,
@@ -890,8 +901,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [A_ALTA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
   [D_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, d_finished, d_reset),
   [E_ALTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, e_finished, e_reset),
-  //[ENT_TG1] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, enter_finished, enter_reset),
   [ESC_UVOM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
+  [F_PACU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, f_finished, f_reset),
   [M_ALTM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, m_finished, m_reset),
   [MINS_SLSH] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mins_finished, mins_reset),
   [N_NOTSIG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, n_finished, n_reset),
@@ -911,7 +922,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define A_ALTA TD(A_ALTA)
 #define D_MACROS TD(D_MACROS)
 #define E_ALTE TD(E_ALTE)
-//#define ENT_TG1 TD(ENT_TG1)
+#define F_PACU TD(F_PACU)
 #define ESC_UVOM TD(ESC_UVOM)
 #define M_ALTM TD(M_ALTM)
 #define MINS_SLSH TD(MINS_SLSH)

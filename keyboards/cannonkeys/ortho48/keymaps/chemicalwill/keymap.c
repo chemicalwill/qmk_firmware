@@ -1,8 +1,4 @@
-/* for ease of flashing, copy and paste...
-make cannonkeys/ortho48:chemicalwill
-dfu-util.exe -d 1eaf:0003 -a 2 -D "C:\msys64\home\wshed\qmk_firmware\cannonkeys_ortho48_chemicalwill.bin"
-make cannonkeys/ortho48:chemicalwill:flash
-*/
+//dfu-util.exe -d 1eaf:0003 -a 2 -D "C:\msys64\home\wshed\qmk_firmware\cannonkeys_ortho48_chemicalwill.bin"
 
 #include QMK_KEYBOARD_H
 
@@ -16,7 +12,7 @@ enum layers {
   _CODE
 };
 
-//layer declarations for keymap cleanness
+//layer keycodes for visibility
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define FN MO(_FN)
@@ -58,16 +54,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |EscUVO|A,AltA|S,AltS| D(TD)|   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * |EscUVO|A,AltA|S,AltS| D(TD)|F,PACU|   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |S,Caps|   Z  |X,COMM|   C  | V(TD)|   B  |N,AltN|M,AltM|   ,  |   .  |  Up  |S,Entr|
+ * |S,Caps|   Z  |X,COMM|   C  |V,Prof|   B  |N,AltN|M,AltM|   ,  |   .  |  Up  |S,Entr|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Ctrl |WKMETA|OSCode| Alt  | Lower|    Space    | Raise| Fn,F5| Left | Down | Right|
  * `-----------------------------------------------------------------------------------'
  */
 [_WORKTD] = LAYOUT_ortho_4x12(
     KC_TAB,    KC_Q,     KC_W,     E_ALTE,    R_REHABDC,  T_ALTT,  KC_Y,      U_ALTU,  KC_I,     O_ALTO,   P_0LABL,  KC_BSPC,
-    ESC_UVOM,  A_ALTA,   S_ALTS,   D_MACROS,  KC_F,       KC_G,    KC_H,      KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+    ESC_UVOM,  A_ALTA,   S_ALTS,   D_MACROS,  F_PACU,     KC_G,    KC_H,      KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     LS_CAPS,   KC_Z,     X_COMMS,  KC_C,      V_MACROS,   KC_B,    N_NOTSIG,  M_ALTM,  KC_COMM,  KC_DOT,   KC_UP,    RS_ENTER,
     KC_LCTL,   WK_META,  OS_CODE,  KC_LALT,   LOWER,      KC_SPC,  KC_SPC,    RAISE,   FN_F5,    KC_LEFT,  KC_DOWN,  KC_RGHT
   ),
@@ -116,14 +112,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      | PgUp |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |MKRSTF|      |BASEQW|             |BASETD|      | Home | PgDn | End  |
+ * |      |      |      |      |BASEQW|             |BASETD|      | Home | PgDn | End  |
  * `-----------------------------------------------------------------------------------'
  */
 [_FN] = LAYOUT_ortho_4x12(
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   _______,
     _______, KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PGUP, _______,
-    _______, _______, MKRSTF,  _______, BASEQW,  _______, _______, BASETD,  _______, KC_HOME, KC_PGDN, KC_END
+    _______, _______, _______, _______, BASEQW,  _______, _______, BASETD,  _______, KC_HOME, KC_PGDN, KC_END
   ),
 
 /* META
@@ -140,13 +136,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_META] = LAYOUT_ortho_4x12(
     KC_TAB,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,  KC_8,    KC_9,     MINS_SLSH,  KC_BSPC,
     KC_DEL,  _______, _______, _______, _______, _______, _______, KC_4,  KC_5,    KC_6,     PLUS_ASTR,  KC_DEL,
-    _______, _______, _______, _______, _______, _______, _______, KC_1,  KC_2,    KC_3,     KC_UP,      ENTTG1,
+    _______, _______, _______, _______, _______, _______, _______, KC_1,  KC_2,    KC_3,     KC_UP,      _______,
     _______, TG_META, _______, _______, TG_META, _______, _______, KC_0,  KC_DOT,  KC_LEFT,  KC_DOWN,    KC_RIGHT
   ),
 
 /* CODE
  * ,-----------------------------------------------------------------------------------.
- * |      | QUEUE|      | EMAIL|REHADC|TPNTCO|      |      |      |      |      |      |
+ * |      |      |      | EMAIL|REHADC|TPNTCO|      |      |      |      |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | QUEUE|      |      | DEFER|      |      |      |      |      |LABEL0|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -156,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_CODE] = LAYOUT_ortho_4x12(
-    _______, QUEUE,   _______, EMAIL,   REHABDC, TPNTCOM, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, EMAIL,   REHABDC, TPNTCOM, _______, _______, _______, _______, _______, _______,
     QUEUE,   _______, _______, DEFER,   _______, _______, _______, _______, _______, LABEL0,  _______, _______,
     _______, _______, DUPE,    CUTCOMM, PROFILE, _______, NOTSIG,  MNLOK,   _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
