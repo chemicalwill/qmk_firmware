@@ -6,11 +6,10 @@ enum custom_keycodes {
   DUPE,
   DEFER,
   EMAIL,
-  ENTTG1,
   LABEL0,
-  MKRSTF,
   MNLOK,
   NOTSIG,
+  PACUFENT,
   PROFILE,
   QUEUE,
   REHABDC,
@@ -104,14 +103,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // when keycode EMAIL is released
       }
       break;
-
-    case ENTTG1:
+    
+    case PACUFENT:
       if (record->event.pressed) {
-        // when keycode ENTTG1 is pressed
-        tap_code(KC_ENTER);
-        layer_invert(_META);
+        // when keycode PACUFENT is pressed
+        SEND_STRING("prn pacu use only");
       } else {
-        // when keycode ENTTG1 is released
+        // when keycode PACUFENT is released
       }
       break;
 
@@ -123,21 +121,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code16(A(KC_O));
       } else {
         // when keycode LABEL0 is released
-      }
-      break;
-
-    case MKRSTF:
-      if (record->event.pressed) {
-        // when keycode MKRSTF is pressed
-        if (host_keyboard_led_state().caps_lock == true) { //check to see if CAPS is on, and switch it off if so
-          tap_code(KC_CAPS);
-        } else {
-        SEND_STRING("make cannonkeys/ortho48:chemicalwill:flash");
-        tap_code(KC_ENTER);
-        reset_keyboard();
-        }
-      } else {
-        // when keycode MKRSTF is released
       }
       break;
 
@@ -222,4 +205,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
-
