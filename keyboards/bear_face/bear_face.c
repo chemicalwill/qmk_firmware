@@ -1,5 +1,5 @@
 /*
-Copyright 2020 Will Hedges <wshedges@outlook.com> @chemicalwill
+Copyright 2020 chemicalwill <https://github.com/chemicalwill>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,9 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "bear_face.h"
 
 void keyboard_pre_init_kb(void) {
-    //Calls the keyboard pre init code
     //Sets LED pin as output
-setPinOutput(F7);
+    setPinOutput(F7);
+
+    keyboard_pre_init_user();
 }
 
 bool led_update_kb(led_t led_state) {
