@@ -6,6 +6,7 @@ enum custom_keycodes {
   DUPE,
   DEFER,
   EMAIL,
+  ENTTG1,
   LABEL0,
   MNLOK,
   NOTSIG,
@@ -101,6 +102,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING("william.hedges@ascension.org");
       } else {
         // when keycode EMAIL is released
+      }
+      break;
+
+    case ENTTG1:
+      if (record->event.pressed) {
+        // when keycode ENTTG1 is pressed
+        tap_code(KC_ENTER);
+        layer_invert(_META);
+      } else {
+        // when keycode ENTTG1 is released
       }
       break;
     
