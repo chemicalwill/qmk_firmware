@@ -1,4 +1,3 @@
-//dfu-util.exe -d 1eaf:0003 -a 2 -D "C:\msys64\home\wshed\qmk_firmware\cannonkeys_ortho48_chemicalwill.bin"
 
 #include QMK_KEYBOARD_H
 

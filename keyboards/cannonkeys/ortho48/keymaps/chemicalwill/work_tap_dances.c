@@ -212,7 +212,7 @@ void c_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_C);
-      tap_code(KC_C);
+      register_code(KC_C);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_C);
@@ -223,6 +223,9 @@ void c_finished (qk_tap_dance_state_t *state, void *user_data) {
 void c_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (ctap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_C);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_C);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -251,7 +254,7 @@ void d_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_D);
-      tap_code(KC_D);
+      register_code(KC_D);
       break;
     case DOUBLE_HOLD:
       //DUPE macro
@@ -273,6 +276,9 @@ void d_finished (qk_tap_dance_state_t *state, void *user_data) {
 void d_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (dtap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_D);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_D);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -298,7 +304,7 @@ void e_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_E);
-      tap_code(KC_E);
+      register_code(KC_E);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_E);
@@ -309,6 +315,9 @@ void e_finished (qk_tap_dance_state_t *state, void *user_data) {
 void e_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (etap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_E);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_E);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -333,11 +342,25 @@ void f_finished (qk_tap_dance_state_t *state, void *user_data) {
       //PACUFENT macro
       SEND_STRING("prn pacu use only");
       break;
+    case DOUBLE_TAP:
+      tap_code(KC_F);
+      register_code(KC_F);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      tap_code(KC_F);
+      register_code(KC_F);
+      break;
   }
 }
 void f_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (ftap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_F);
+      break;
+    case DOUBLE_TAP:
+      unregister_code(KC_F);
+      break;
+    case DOUBLE_SINGLE_TAP:
       unregister_code(KC_F);
       break;
   }
@@ -390,7 +413,7 @@ void m_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_M);
-      tap_code(KC_M);
+      register_code(KC_M);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_M);
@@ -401,6 +424,9 @@ void m_finished (qk_tap_dance_state_t *state, void *user_data) {
 void m_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (mtap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_M);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_M);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -450,7 +476,7 @@ void n_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_N);
-      tap_code(KC_N);
+      register_code(KC_N);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_N);
@@ -461,6 +487,9 @@ void n_finished (qk_tap_dance_state_t *state, void *user_data) {
 void n_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (ntap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_N);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_N);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -486,7 +515,7 @@ void o_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_O);
-      tap_code(KC_O);
+      register_code(KC_O);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_O);
@@ -497,6 +526,9 @@ void o_finished (qk_tap_dance_state_t *state, void *user_data) {
 void o_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (otap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_O);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_O);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -525,7 +557,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_P);
-      tap_code(KC_P);
+      register_code(KC_P);
       break;      
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_P);
@@ -534,7 +566,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
     case TRIPLE_TAP:        //keep triple, quad dances for rapidly choosing dropdowns
       tap_code(KC_P);
       tap_code(KC_P);
-      tap_code(KC_P);
+      register_code(KC_P);
       break;
     case TRIPLE_SINGLE_TAP:
       tap_code(KC_P);
@@ -545,7 +577,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
       tap_code(KC_P);
       tap_code(KC_P);
       tap_code(KC_P);
-      tap_code(KC_P);
+      register_code(KC_P);
       break;
     case QUAD_SINGLE_TAP:
       tap_code(KC_P);
@@ -560,10 +592,19 @@ void p_reset (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
       unregister_code(KC_P);
       break;
+    case DOUBLE_TAP:
+      unregister_code(KC_P);
+      break;
     case DOUBLE_SINGLE_TAP:
       unregister_code(KC_P);
       break;
+    case TRIPLE_TAP:
+      unregister_code(KC_P);
+      break;
     case TRIPLE_SINGLE_TAP:
+      unregister_code(KC_P);
+      break;
+    case QUAD_TAP:
       unregister_code(KC_P);
       break;
     case QUAD_SINGLE_TAP:
@@ -627,7 +668,7 @@ void r_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_R);
-      tap_code(KC_R);
+      register_code(KC_R);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_R);
@@ -638,6 +679,9 @@ void r_finished (qk_tap_dance_state_t *state, void *user_data) {
 void r_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (rtap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_R);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_R);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -663,7 +707,7 @@ void s_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_S);
-      tap_code(KC_S);
+      register_code(KC_S);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_S);
@@ -674,6 +718,9 @@ void s_finished (qk_tap_dance_state_t *state, void *user_data) {
 void s_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (stap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_S);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_S);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -699,7 +746,7 @@ void t_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_T);
-      tap_code(KC_T);
+      register_code(KC_T);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_T);
@@ -710,6 +757,9 @@ void t_finished (qk_tap_dance_state_t *state, void *user_data) {
 void t_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (ttap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_T);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_T);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -735,7 +785,7 @@ void u_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_U);
-      tap_code(KC_U);
+      register_code(KC_U);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_U);
@@ -746,6 +796,9 @@ void u_finished (qk_tap_dance_state_t *state, void *user_data) {
 void u_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (utap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_U);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_U);
       break;
     case DOUBLE_SINGLE_TAP:
@@ -774,7 +827,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_V);
-      tap_code(KC_V);
+      register_code(KC_V);
       break;      
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_V);
@@ -783,7 +836,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
     case TRIPLE_TAP:    //Leave triple, quad taps in, in case I hit 'v' on several different orders I'm verifying
       tap_code(KC_V);
       tap_code(KC_V);
-      tap_code(KC_V);
+      register_code(KC_V);
       break;
     case TRIPLE_SINGLE_TAP:
       tap_code(KC_V);
@@ -794,7 +847,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
       tap_code(KC_V);
       tap_code(KC_V);
       tap_code(KC_V);
-      tap_code(KC_V);
+      register_code(KC_V);
       break;
     case QUAD_SINGLE_TAP:
       tap_code(KC_V);
@@ -809,10 +862,19 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
       unregister_code(KC_V);
       break;
+    case DOUBLE_TAP:
+      unregister_code(KC_V);
+      break;
     case DOUBLE_SINGLE_TAP:
       unregister_code(KC_V);
       break;
+    case TRIPLE_TAP:
+      unregister_code(KC_V);
+      break;
     case TRIPLE_SINGLE_TAP:
+      unregister_code(KC_V);
+      break;
+    case QUAD_TAP:
       unregister_code(KC_V);
       break;
     case QUAD_SINGLE_TAP:
@@ -875,7 +937,7 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
       tap_code(KC_X);
-      tap_code(KC_X);
+      register_code(KC_X);
       break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_X);
@@ -886,6 +948,9 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
 void x_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (xtap_state.state) {
     case SINGLE_TAP:
+      unregister_code(KC_X);
+      break;
+    case DOUBLE_TAP:
       unregister_code(KC_X);
       break;
     case DOUBLE_SINGLE_TAP:
