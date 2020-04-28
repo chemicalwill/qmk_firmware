@@ -10,7 +10,7 @@ enum custom_keycodes {
   LABEL0,
   MNLOK,
   NOTSIG,
-  PACUFENT,
+  FENTPACU,
   PROFILE,
   QUEUE,
   REHABDC,
@@ -115,12 +115,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
     
-    case PACUFENT:
+    case FENTPACU:
       if (record->event.pressed) {
-        // when keycode PACUFENT is pressed
+        // when keycode FENTPACU is pressed
+        tap_code(KC_TAB);
         SEND_STRING("prn pacu use only");
       } else {
-        // when keycode PACUFENT is released
+        // when keycode FENTPACU is released
       }
       break;
 
