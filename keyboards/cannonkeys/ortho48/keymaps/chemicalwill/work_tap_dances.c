@@ -11,10 +11,10 @@ enum {
   DOUBLE_TAP = 3,         //key is tapped twice, but NOT interrupted
   DOUBLE_HOLD = 4,        //key is tapped twice and held
   DOUBLE_SINGLE_TAP = 5,  //key is tapped twice and interrupted right after
-  TRIPLE_TAP = 6,         
+  TRIPLE_TAP = 6,
   TRIPLE_HOLD = 7,
   TRIPLE_SINGLE_TAP = 8,
-  QUAD_TAP = 9, 
+  QUAD_TAP = 9,
   QUAD_HOLD = 10,
   QUAD_SINGLE_TAP = 11
 };
@@ -39,7 +39,7 @@ enum {
   U_ALTU,
   V_MACROS,
   WK_META,
-  X_COMMS  
+  X_COMMS
 };
 
 //Function associated with all tap dances
@@ -58,14 +58,14 @@ void d_reset (qk_tap_dance_state_t *state, void *user_data);
 void e_finished (qk_tap_dance_state_t *state, void *user_data);
 void e_reset (qk_tap_dance_state_t *state, void *user_data);
 
-void f_finished (qk_tap_dance_state_t *state, void *user_data);
-void f_reset (qk_tap_dance_state_t *state, void *user_data);
-
 void esc_finished (qk_tap_dance_state_t *state, void *user_data);
 void esc_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void ent_finished (qk_tap_dance_state_t *state, void *user_data);
 void ent_reset (qk_tap_dance_state_t *state, void *user_data);
+
+void f_finished (qk_tap_dance_state_t *state, void *user_data);
+void f_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void m_finished (qk_tap_dance_state_t *state, void *user_data);
 void m_reset (qk_tap_dance_state_t *state, void *user_data);
@@ -116,7 +116,7 @@ int cur_dance (qk_tap_dance_state_t *state) {
       //     else return SINGLE_HOLD;
       //If the interrupting key is released before the tap-dance key, then it is a single HOLD
       //      However, if the tap-dance key is released first, then it is a single TAP
-      //      But how to get access to the state of the interrupting key???? 
+      //      But how to get access to the state of the interrupting key????
       return SINGLE_TAP;
     } else {
       if (!state->pressed)
@@ -344,24 +344,24 @@ void ent_finished (qk_tap_dance_state_t *state, void *user_data) {
   enttap_state.state = cur_dance(state);
   switch (enttap_state.state) {
     case SINGLE_TAP:
-      register_code(KC_ENT);
+      register_code(KC_ENTER);
       break;
     case SINGLE_HOLD:
-      register_code(KC_ENT);
+      register_code(KC_ENTER);
       break;
     case DOUBLE_HOLD:
-      tap_code(KC_ENT);
+      tap_code(KC_ENTER);
       layer_invert(_META);
-      break; 
+      break;
   }
 }
 void ent_reset (qk_tap_dance_state_t *state, void *user_data) {
   switch (enttap_state.state) {
     case SINGLE_TAP:
-      unregister_code(KC_ENT);
+      unregister_code(KC_ENTER);
       break;
     case SINGLE_HOLD:
-      unregister_code(KC_ENT);
+      unregister_code(KC_ENTER);
       break;
   }
   enttap_state.state = 0;
@@ -410,6 +410,8 @@ void f_finished (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case SINGLE_HOLD:
       //FENTPACU macro
+      tap_code(KC_DOWN);
+      tap_code(KC_ENTER);
       tap_code(KC_TAB);
       SEND_STRING("prn pacu use only");
       break;
@@ -599,7 +601,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
     case DOUBLE_TAP:
       tap_code(KC_P);
       register_code(KC_P);
-      break;      
+      break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_P);
       register_code(KC_P);
@@ -694,14 +696,14 @@ void r_finished (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       //REHABDC macro
       tap_code(KC_TAB);   //tab to Discontinue Reason dropdown
-      tap_code(KC_TAB); 
+      tap_code(KC_TAB);
       tap_code(KC_DOWN);  //select "Patient Discharged"
       tap_code(KC_DOWN);
       tap_code(KC_DOWN);
       tap_code(KC_DOWN);
       tap_code(KC_DOWN);
-      tap_code(KC_DOWN); 
-      tap_code(KC_TAB);   //tab to Label Copies 
+      tap_code(KC_DOWN);
+      tap_code(KC_TAB);   //tab to Label Copies
       tap_code(KC_TAB);
       tap_code(KC_TAB);
       tap_code(KC_0);
@@ -869,7 +871,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
     case DOUBLE_TAP:
       tap_code(KC_V);
       register_code(KC_V);
-      break;      
+      break;
     case DOUBLE_SINGLE_TAP:
       tap_code(KC_V);
       register_code(KC_V);
