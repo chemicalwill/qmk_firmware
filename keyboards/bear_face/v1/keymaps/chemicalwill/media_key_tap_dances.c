@@ -55,7 +55,7 @@ int cur_dance (qk_tap_dance_state_t *state) {
       //     else return SINGLE_HOLD;
       //If the interrupting key is released before the tap-dance key, then it is a single HOLD
       //      However, if the tap-dance key is released first, then it is a single TAP
-      //      But how to get access to the state of the interrupting key???? 
+      //      But how to get access to the state of the interrupting key????
       return SINGLE_TAP;
     } else {
       if (!state->pressed)
@@ -211,7 +211,7 @@ void mprv_reset (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case SINGLE_HOLD:
       unregister_code(KC_F4);
-      break; 
+      break;
   }
   mprvtap_state.state = 0;
 }
