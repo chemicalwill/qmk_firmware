@@ -1,5 +1,4 @@
 # bear_face
-===
 
 ![bear_face](https://i.imgur.com/G5Bxlff.png)
 
