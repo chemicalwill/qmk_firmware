@@ -7,9 +7,13 @@ This layout replaces the stock layout on the Vortex Race 3.
 - FORCE_NKRO enabled by default
 
 - Pn key is set to 'KC_NO' by default
-    * might be a good place for a macro, or to put your PC to sleep, etc.
+    * Might be a good place for a macro, or to put your PC to sleep, etc.
 
-- a combined function layer that mimics the sublegends on the stock caps (regardless of layout)
+- A combined function layer that mimics the sublegends on the stock caps (regardless of layout)
     * 'Reset' will put the keyboard into DFU mode
     * 'APP' sends 'KC_APP'
-    * set base layer toggles for QWERTY, COLEMAK, and DVORAK layouts (will persist after reboot)
+    * Set base layer toggles for QWERTY, COLEMAK, and DVORAK layouts (will persist after reboot)
+
+- New things in v2:
+    * Added ISO support
+    * Added optional stepped caps (will require compatible plate)
