@@ -101,8 +101,8 @@ typedef struct usbConfigurationDescriptor {
     usbInterfaceDescriptor_t rawInterface;
     usbHIDDescriptor_t       rawHID;
 #    ifdef USB_CFG_HAVE_INTRIN_ENDPOINT3
-    usbEndpointDescriptor_t rawINEndpoint;
-    usbEndpointDescriptor_t rawOUTEndpoint;
+    usbEndpointDescriptor_t  rawINEndpoint;
+    usbEndpointDescriptor_t  rawOUTEndpoint;
 #    endif
 #endif
 } __attribute__((packed)) usbConfigurationDescriptor_t;

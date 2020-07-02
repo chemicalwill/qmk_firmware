@@ -6,7 +6,7 @@ QMK-compatible replacement PCB for the Vortex Race 3 designed by [chemicalwill](
 
 * Keyboard Maintainer: [chemicalwill](https://github.com/chemicalwill)
 * Hardware Supported: bear_face v1, v2; atmega32u4
-* Hardware Availability: [by request on reddit](https://www.reddit.com/message/compose?to=chemicalwill&subject=bear_face%20v2)
+* Hardware Availability: [currently by request](https://www.reddit.com/message/compose?to=chemicalwill&subject=bear_face%20v2)
 
 Make example for this keyboard (after setting up your build environment):
 

@@ -19,8 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 
-#ifdef KEYBOARD_bear_face_v1
-	#include "v1.h"
-#elif KEYBOARD_bear_face_v2
-	#include "v2.h"
+#if defined(KEYBOARD_bear_face_v1)
+#    include "v1.h"
+#elif defined(KEYBOARD_bear_face_v2)
+#    include "v2.h"
 #endif
