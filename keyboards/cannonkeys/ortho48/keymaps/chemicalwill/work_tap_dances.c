@@ -837,18 +837,18 @@ void u_finished (qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 void u_reset (qk_tap_dance_state_t *state, void *user_data) {
-  switch (utap_state.state) {
-    case SINGLE_TAP:
-      unregister_code(KC_U);
-      break;
-    case DOUBLE_TAP:
-      unregister_code(KC_U);
-      break;
-    case DOUBLE_SINGLE_TAP:
-      unregister_code(KC_U);
-      break;
-  }
-  utap_state.state = 0;
+    switch (utap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_U);
+            break;
+        case DOUBLE_TAP:
+            unregister_code(KC_U);
+            break;
+        case DOUBLE_SINGLE_TAP:
+            unregister_code(KC_U);
+            break;
+    }
+    utap_state.state = 0;
 }
 
 //Instance 'xtap' for the V tap dance
