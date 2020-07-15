@@ -24,7 +24,6 @@ enum {
     A_ALTA,
     D_MACROS,
     E_ALTE,
-    ENT_TGM,
     ESC_UVOM,
     F_FENT,
     M_ALTM,
@@ -333,38 +332,6 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     etap_state.state = 0;
-}
-
-//Instance 'xtap' for the enter/TG(_META) tap dance
-static xtap enttap_state = {
-    .is_press_action = true,
-    .state = 0
-};
-void ent_finished (qk_tap_dance_state_t *state, void *user_data) {
-    enttap_state.state = cur_dance(state);
-    switch (enttap_state.state) {
-        case SINGLE_TAP:
-            register_code(KC_ENTER);
-            break;
-        case SINGLE_HOLD:
-            register_code(KC_ENTER);
-            break;
-        case DOUBLE_HOLD:
-            tap_code(KC_ENTER);
-            layer_invert(_META);
-            break;
-    }
-}
-void ent_reset (qk_tap_dance_state_t *state, void *user_data) {
-    switch (enttap_state.state) {
-        case SINGLE_TAP:
-            unregister_code(KC_ENTER);
-            break;
-        case SINGLE_HOLD:
-            unregister_code(KC_ENTER);
-            break;
-    }
-    enttap_state.state = 0;
 }
 
 //Instance 'xtap' for the ESC/UVOM tap dance
@@ -939,9 +906,6 @@ void wk_finished (qk_tap_dance_state_t *state, void *user_data) {
             tap_code(KC_LWIN);
             break;
         case SINGLE_HOLD:
-            layer_on(_META);
-            break;
-        case DOUBLE_TAP:
             if (layer_state_is(_META)) {
                 layer_off(_META);
             } else {
@@ -1009,7 +973,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [A_ALTA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [D_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, d_finished, d_reset),
     [E_ALTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, e_finished, e_reset),
-    [ENT_TGM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ent_finished, ent_reset),
     [ESC_UVOM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
     [F_FENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, f_finished, f_reset),
     [M_ALTM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, m_finished, m_reset),
@@ -1031,7 +994,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define A_ALTA TD(A_ALTA)
 #define D_MACROS TD(D_MACROS)
 #define E_ALTE TD(E_ALTE)
-#define ENT_TGM TD(ENT_TGM)
 #define F_FENT TD(F_FENT)
 #define ESC_UVOM TD(ESC_UVOM)
 #define M_ALTM TD(M_ALTM)

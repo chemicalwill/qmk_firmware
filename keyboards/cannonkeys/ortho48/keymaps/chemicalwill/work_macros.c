@@ -1,7 +1,7 @@
 //macro keycode declarations
 enum custom_keycodes {
-    BASEQW = SAFE_RANGE,
-    BASETD,
+    BASE_QW = SAFE_RANGE,
+    BASE_TD,
     CUTCOMM,
     DUPE,
     DEFER,
@@ -36,21 +36,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    case BASEQW:
+    case BASE_QW:
         if (record->event.pressed) {
-            // when keycode BASEQW is pressed
+            // when keycode BASE_QW is pressed
             set_single_persistent_default_layer(_QWERTY);
         } else {
-            // when keycode BASEQW is released
+            // when keycode BASE_QW is released
         }
         break;
 
-    case BASETD:
+    case BASE_TD:
         if (record->event.pressed) {
-            // when keycode BASETD is pressed
+            // when keycode BASE_TD is pressed
             set_single_persistent_default_layer(_WORKTD);
         } else {
-            // when keycode BASETD is released
+            // when keycode BASE_TD is released
         }
         break;
 
@@ -102,16 +102,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("william.hedges@ascension.org");
         } else {
             // when keycode EMAIL is released
-        }
-        break;
-
-    case ENTTG1:
-        if (record->event.pressed) {
-            // when keycode ENTTG1 is pressed
-            tap_code(KC_ENTER);
-            layer_invert(_META);
-        } else {
-            // when keycode ENTTG1 is released
         }
         break;
 
