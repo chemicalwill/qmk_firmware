@@ -18,9 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xCA04
-#define PRODUCT_ID      0x0248
-#define DEVICE_VER      0x0001
+#define VENDOR_ID 0xCA04
+#define PRODUCT_ID 0x0248
+#define DEVICE_VER 0x0001
 /* in python2: list(u"whatever".encode('utf-16-le')) */
 /*   at most 32 characters or the ugly hack in usb_main.c borks */
 #define MANUFACTURER QMK
@@ -43,7 +43,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_HAS_GHOST
 
 /* Set 0 if debouncing isn't needed */
-#define DEBOUNCE    5
+#define DEBOUNCE 5
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -54,8 +54,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define WS2812_LED_N 9
 #define RGBLED_NUM WS2812_LED_N
-#define PORT_WS2812     GPIOB
-#define PIN_WS2812      15
+#define PORT_WS2812 GPIOB
+#define PIN_WS2812 15
 #define WS2812_SPI SPID2
 
 /*

@@ -12,7 +12,7 @@ DFU_SUFFIX_ARGS = -v 1eaf -p 0003
 # project specific files
 VPATH += keyboards/cannonkeys/bluepill
 SRC =	led.c \
-      keyboard.c
+	keyboard.c
 
 #BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes	# Mouse keys
