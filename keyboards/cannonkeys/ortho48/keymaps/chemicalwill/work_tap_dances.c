@@ -60,9 +60,6 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data);
 void esc_finished (qk_tap_dance_state_t *state, void *user_data);
 void esc_reset (qk_tap_dance_state_t *state, void *user_data);
 
-void ent_finished (qk_tap_dance_state_t *state, void *user_data);
-void ent_reset (qk_tap_dance_state_t *state, void *user_data);
-
 void f_finished (qk_tap_dance_state_t *state, void *user_data);
 void f_reset (qk_tap_dance_state_t *state, void *user_data);
 

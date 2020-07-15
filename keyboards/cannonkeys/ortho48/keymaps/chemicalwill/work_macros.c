@@ -6,7 +6,6 @@ enum custom_keycodes {
     DUPE,
     DEFER,
     EMAIL,
-    ENTTG1,
     LABEL0,
     MNLOK,
     NOTSIG,
