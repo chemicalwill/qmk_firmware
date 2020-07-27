@@ -107,9 +107,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case FENTPACU:
         if (record->event.pressed) {
             // when keycode FENTPACU is pressed
-            tap_code(KC_DOWN);
-            tap_code(KC_ENTER);
-            tap_code(KC_TAB);
             SEND_STRING("prn pacu use only");
         } else {
             // when keycode FENTPACU is released
@@ -198,6 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case TPNTCOM:
         if (record->event.pressed) {
             // when keycode TPNTCOM is pressed
+            SEND_STRING("\t\t\t\t\t\t\t\t") // 8 tabs after entering the rate
             SEND_STRING("t\t1600\tt+\t1559");
             SEND_STRING("\t\t\t\t" SS_LCTL("ax") SS_LSFT("\t\t") SS_LCTL("v") "\t\t\t\t\tw\t");
         } else {

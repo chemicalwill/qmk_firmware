@@ -374,9 +374,6 @@ void f_finished (qk_tap_dance_state_t *state, void *user_data) {
             break;
         case SINGLE_HOLD:
             //FENTPACU macro
-            tap_code(KC_DOWN);
-            tap_code(KC_ENTER);
-            tap_code(KC_TAB);
             SEND_STRING("prn pacu use only");
             break;
         case DOUBLE_TAP:
