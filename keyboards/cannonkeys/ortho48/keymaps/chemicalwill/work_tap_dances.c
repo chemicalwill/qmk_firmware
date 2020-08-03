@@ -907,6 +907,9 @@ void wk_finished (qk_tap_dance_state_t *state, void *user_data) {
                 layer_off(_META);
             } else {
                 layer_on(_META);
+        case DOUBLE_HOLD:
+            layer_on(_META);
+            break;
         }
         break;
     }
