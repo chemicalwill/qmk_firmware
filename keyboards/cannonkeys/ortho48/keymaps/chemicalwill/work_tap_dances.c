@@ -26,6 +26,7 @@ enum {
     E_ALTE,
     ESC_UVOM,
     F_FENT,
+    H_HMPROD,
     M_ALTM,
     MINS_SLSH,
     N_NOTSIG,
@@ -62,6 +63,9 @@ void esc_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void f_finished (qk_tap_dance_state_t *state, void *user_data);
 void f_reset (qk_tap_dance_state_t *state, void *user_data);
+
+void h_finished (qk_tap_dance_state_t *state, void *user_data);
+void h_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void m_finished (qk_tap_dance_state_t *state, void *user_data);
 void m_reset (qk_tap_dance_state_t *state, void *user_data);
@@ -402,6 +406,44 @@ void f_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ftap_state.state = 0;
+}
+
+//Instance 'xtap' for the H/HMPROD tap dance
+static xtap htap_state = {
+    .is_press_action = true,
+    .state = 0
+};
+void h_finished (qk_tap_dance_state_t *state, void *user_data) {
+    htap_state.state = cur_dance(state);
+    switch (htap_state.state) {
+        case SINGLE_TAP:
+            register_code(KC_H);
+            break;
+        case SINGLE_HOLD:
+            // HMPROD macro
+            tap_code(KC_TAB);
+            tap_code(KC_TAB);
+            tap_code(KC_TAB);
+            tap_code(KC_DOWN);
+            tap_code16(A(KC_M));
+            tap_code16(A(KC_O));
+            break;
+        case DOUBLE_TAP:
+            tap_code(KC_H);
+            register_code(KC_H);
+            break;
+    }
+}
+void h_reset (qk_tap_dance_state_t *state, void *user_data) {
+    switch (htap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_H);
+            break;
+        case DOUBLE_TAP:
+            unregister_code(KC_H);
+            break;
+    }
+    htap_state.state = 0;
 }
 
 //Instance 'xtap' for the M/Alt+M tap dance

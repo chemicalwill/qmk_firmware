@@ -3,9 +3,10 @@ enum custom_keycodes {
     BASE_QW = SAFE_RANGE,
     BASE_TD,
     CUTCOMM,
-    DUPE,
     DEFER,
+    DUPE,
     EMAIL,
+    HMPROD,
     LABEL0,
     MNLOK,
     NOTSIG,
@@ -113,6 +114,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("prn pacu use only");
         } else {
             // when keycode FENTPACU is released
+        }
+        break;
+
+    case HMPROD:
+        if (record->event.pressed) {
+            // when keycode HMPROD is pressed
+            tap_code(KC_TAB);
+            tap_code(KC_TAB);
+            tap_code(KC_TAB);
+            tap_code(KC_DOWN);
+            tap_code16(A(KC_M));
+            tap_code16(A(KC_O));
+        } else {
+            // when keycode HMPROD is released
         }
         break;
 
