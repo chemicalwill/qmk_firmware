@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_WORKTD] = LAYOUT_ortho_4x12(
     KC_TAB,    KC_Q,     KC_W,     E_ALTE,    R_REHABDC,  T_ALTT,  KC_Y,      U_ALTU,  KC_I,     O_ALTO,   P_0LABL,  KC_BSPC,
-    ESC_UVOM,  A_ALTA,   S_ALTS,   D_MACROS,  F_FENT,     KC_G,    KC_H,      KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
+    ESC_UVOM,  A_ALTA,   S_ALTS,   D_MACROS,  F_FENT,     KC_G,    H_HMPROD,      KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
     LS_CAPS,   KC_Z,     X_COMMS,  KC_C,      V_MACROS,   KC_B,    N_NOTSIG,  M_ALTM,  KC_COMM,  KC_DOT,   KC_UP,    RS_ENTER,
     KC_LCTL,   WK_META,  OS_CODE,  KC_LALT,   LOWER,      KC_SPC,  KC_SPC,    RAISE,   FN_F5,    KC_LEFT,  KC_DOWN,  KC_RGHT
 ),

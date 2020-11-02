@@ -1017,6 +1017,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [E_ALTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, e_finished, e_reset),
     [ESC_UVOM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
     [F_FENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, f_finished, f_reset),
+    [H_HMPROD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, h_finished, h_reset),
     [M_ALTM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, m_finished, m_reset),
     [MINS_SLSH] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mins_finished, mins_reset),
     [N_NOTSIG] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, n_finished, n_reset),
@@ -1036,8 +1037,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define A_ALTA TD(A_ALTA)
 #define D_MACROS TD(D_MACROS)
 #define E_ALTE TD(E_ALTE)
-#define F_FENT TD(F_FENT)
 #define ESC_UVOM TD(ESC_UVOM)
+#define F_FENT TD(F_FENT)
+#define H_HMPROD TD(H_HMPROD)
 #define M_ALTM TD(M_ALTM)
 #define MINS_SLSH TD(MINS_SLSH)
 #define N_NOTSIG TD(N_NOTSIG)
