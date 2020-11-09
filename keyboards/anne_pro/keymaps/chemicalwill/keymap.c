@@ -1,9 +1,11 @@
 /*
 from mingw64
 cd /c/users/wshed/qmk_firmware_clone/keyboards/anne_pro
+make anne_pro:chemicalwill
 
 from cmd
-C:\Users\wshed\qmk_firmware_clone\keyboards\anne_pro\dfuse-pack.py -b 0x08004000:anne_pro_chemicalwill.bin anne_pro_chemicalwill.dfu
+qmk_firmware_clone\keyboards\anne_pro\dfuse-pack.py -b 0x08004000:anne_pro_chemicalwill.bin anne_pro_chemicalwill.dfu
+*/
 
 /* Copyright 2019 Michiel Visser
  *

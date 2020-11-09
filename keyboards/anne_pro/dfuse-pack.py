@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! python3
 
 # Written by Antonio Galea - 2010/11/18
 # Distributed under Gnu LGPL 3.0
@@ -8,6 +8,12 @@
 import sys, struct, zlib, os
 import binascii
 from optparse import OptionParser
+
+import logging
+from pathlib import Path
+
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.disable(logging.CRITICAL)
 
 try:
     from intelhex import IntelHex
@@ -189,6 +195,7 @@ if __name__ == "__main__":
                     print("Address %s invalid." % address)
                     sys.exit(1)
                 if not os.path.isfile(binfile):
+                    logging.debug(f'os.path.abspath(binfile) == {os.path.abspath(binfile)}')
                     print("Unreadable file '%s'." % binfile)
                     sys.exit(1)
                 checkbin(binfile)
