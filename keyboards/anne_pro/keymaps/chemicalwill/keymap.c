@@ -1,10 +1,6 @@
 /*
-from mingw64
-cd /c/users/wshed/qmk_firmware_clone/keyboards/anne_pro
-make anne_pro:chemicalwill
-
-from cmd
-qmk_firmware_clone\keyboards\anne_pro\dfuse-pack.py -b 0x08004000:anne_pro_chemicalwill.bin anne_pro_chemicalwill.dfu
+cd c:/users/wshed/qmk_firmware_clone
+make anne_pro:chemicalwill:flash
 */
 
 /* Copyright 2019 Michiel Visser
@@ -35,24 +31,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LWIN, KC_LALT,                   KC_SPACE,                                    KC_RALT, MO(1),   MO(2),   KC_RCTL
     ),
     [1] = LAYOUT(
-        KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-        _______, _______, KC_UP,   _______, APL_RGB, APL_RAT, APL_BRT, APL_MOD, KC_UP,   KC_SLCK, KC_PAUS, KC_HOME, KC_END,  KC_PSCR,
-        _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP, KC_PGDN,          _______,
-        _______, _______, _______, _______, _______, TG(3),   _______, _______, _______, KC_INS,  KC_DEL,                    _______,
-        _______, _______, _______,                   _______,                                     _______, _______, _______, _______
+        KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, APL_RGB, APL_RAT, APL_BRT, APL_MOD, KC_UP,   KC_SLCK, KC_PAUS, KC_HOME, KC_END,  KC_PSCR,
+        XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP, KC_PGDN,          XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(3),   XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  KC_DEL,                    _______,
+        _______, _______, _______,                   XXXXXXX,                                     _______, _______, _______, _______
     ),
     [2] = LAYOUT(
-        RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
-        _______, _______, _______,                   _______,                                     _______, _______, _______, _______
+        RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   _______,
+        _______, _______, _______,                   XXXXXXX,                                     _______, _______, _______, _______
     ),
     [3] = LAYOUT(
-        TG(3),   APB_HC1, APB_HC2, APB_HC3, APB_HC4, _______, _______, _______, _______, _______, APB_LGC, APB_OFF, APB_ON,  _______,
-        _______, APB_HS1, APB_HS2, APB_HS3, APB_HS4, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-        _______, APB_HD1, APB_HD2, APB_HD3, APB_HD4, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
-        APB_HLQ, _______, _______,                   _______,                                     _______, _______, _______, _______
+        TG(3),   APB_HC1, APB_HC2, APB_HC3, APB_HC4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, APB_LGC, APB_OFF, APB_ON,  XXXXXXX,
+        XXXXXXX, APB_HS1, APB_HS2, APB_HS3, APB_HS4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, APB_HD1, APB_HD2, APB_HD3, APB_HD4, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX,
+        APB_HLQ, XXXXXXX, XXXXXXX,                   XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 };
