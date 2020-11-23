@@ -949,13 +949,13 @@ void wk_finished (qk_tap_dance_state_t *state, void *user_data) {
                 layer_off(_META);
             } else {
                 layer_on(_META);
+        }
         case DOUBLE_HOLD:
             layer_on(_META);
             break;
-        }
-        break;
     }
 }
+
 void wk_reset (qk_tap_dance_state_t *state, void *user_data) {
     if (wktap_state.state==SINGLE_HOLD) {
         layer_off(_META);
