@@ -10,7 +10,7 @@ enum {
     SINGLE_HOLD = 2,
     DOUBLE_TAP = 3,         //key is tapped twice uninterrupted
     DOUBLE_HOLD = 4,        //key is tapped twice and held
-    DOUBLE_SINGLE_TAP = 5,  //key is tapped twice and then interrupted
+    DOUBLE_SINGLE_TAP = 5   //key is tapped twice and then interrupted
 };
 //Tap Dance enums
 enum {
@@ -20,8 +20,6 @@ enum {
     MPRV_F4 = 3,
     MPLY_F5 = 4,
     MNXT_F6 = 5,
-    MINS_UN = 6,
-    EQL_PLU = 7
 };
 
 //set up Tap Dance for tap vs. hold
@@ -45,12 +43,6 @@ void mply_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void mnxt_finished (qk_tap_dance_state_t *state, void *user_data);
 void mnxt_reset (qk_tap_dance_state_t *state, void *user_data);
-
-void mins_finished (qk_tap_dance_state_t *state, void *user_data);
-void mins_reset (qk_tap_dance_state_t *state, void *user_data);
-
-void eql_finished (qk_tap_dance_state_t *state, void *user_data);
-void eql_reset (qk_tap_dance_state_t *state, void *user_data);
 
 
 //Determine tap state
@@ -280,56 +272,6 @@ void mnxt_reset (qk_tap_dance_state_t *state, void *user_data) {
     mnxttap_state.state = 0;
 }
 
-//instance 'xtap' for the 'mins/unds' tap dance
-static xtap minstap_state = {
-    .is_press_action = true,
-    .state = 0
-};
-void mins_finished (qk_tap_dance_state_t *state, void *user_data) {
-    minstap_state.state = cur_dance(state);
-    switch (minstap_state.state) {
-        case SINGLE_TAP:
-            register_code(KC_MINS);
-            break;
-        case SINGLE_HOLD:
-            tap_code16(KC_UNDS);
-            break;
-    }
-}
-void mins_reset (qk_tap_dance_state_t *state, void *user_data) {
-    switch (minstap_state.state) {
-        case SINGLE_TAP:
-            unregister_code(KC_MINS);
-            break;
-    }
-    minstap_state.state = 0;
-}
-
-//instance 'xtap' for the 'eql/plus' tap dance
-static xtap eqltap_state = {
-    .is_press_action = true,
-    .state = 0
-};
-void eql_finished (qk_tap_dance_state_t *state, void *user_data) {
-    eqltap_state.state = cur_dance(state);
-    switch (eqltap_state.state) {
-        case SINGLE_TAP:
-            register_code(KC_EQL);
-            break;
-        case SINGLE_HOLD:
-            tap_code16(KC_PLUS);
-            break;
-    }
-}
-void eql_reset (qk_tap_dance_state_t *state, void *user_data) {
-    switch (eqltap_state.state) {
-        case SINGLE_TAP:
-            unregister_code(KC_EQL);
-            break;
-    }
-    eqltap_state.state = 0;
-}
-
 
 //Tap Dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -338,9 +280,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [VOLU_F3] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, volu_finished, volu_reset),
     [MPRV_F4] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mprv_finished, mprv_reset),
     [MPLY_F5] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mply_finished, mply_reset),
-    [MNXT_F6] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mnxt_finished, mnxt_reset),
-    [MINS_UN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mins_finished, mins_reset),
-    [EQL_PLU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, eql_finished, eql_reset)
+    [MNXT_F6] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, mnxt_finished, mnxt_reset)
 };
 
 #define MUTE_F1 TD(MUTE_F1)
@@ -349,5 +289,3 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define MPRV_F4 TD(MPRV_F4)
 #define MPLY_F5 TD(MPLY_F5)
 #define MNXT_F6 TD(MNXT_F6)
-#define MINS_UN TD(MINS_UN)
-#define EQL_PLU TD(EQL_PLU)

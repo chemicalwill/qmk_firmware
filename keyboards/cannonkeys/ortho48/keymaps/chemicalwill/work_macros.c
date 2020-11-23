@@ -145,7 +145,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MNLOK:
         if (record->event.pressed) {
             // when keycode MNLOK is pressed
-            SEND_STRING("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"); //21 tabs as of 11/5
+            tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+            tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+            tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+            tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+            tap_code(KC_TAB); // total of 21 tabs as of 11/16
             tap_code(KC_P);
             tap_code(KC_DOWN);
             tap_code(KC_DOWN);
