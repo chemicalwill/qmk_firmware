@@ -795,7 +795,7 @@ void t_finished (qk_tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_TAP:
             tap_code(KC_T);
-            register_code(KC_T);
+            tap_code(KC_T);
             break;
         case DOUBLE_SINGLE_TAP:
             tap_code(KC_T);
@@ -806,9 +806,6 @@ void t_finished (qk_tap_dance_state_t *state, void *user_data) {
 void t_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ttap_state.state) {
         case SINGLE_TAP:
-            unregister_code(KC_T);
-            break;
-        case DOUBLE_TAP:
             unregister_code(KC_T);
             break;
         case DOUBLE_SINGLE_TAP:
