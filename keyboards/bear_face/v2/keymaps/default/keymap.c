@@ -18,10 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _QWER,
-    _COLE,
-    _DVOR,
-    _FN1,
+	_QWER,
+	_COLE,
+	_DVOR,
+	_FN1,
 };
 
 #define FN1_CAPS LT(_FN1, KC_CAPS)

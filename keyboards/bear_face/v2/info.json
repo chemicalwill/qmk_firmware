@@ -2,10 +2,11 @@
     "keyboard_name": "bear_face",
     "url": "https://github.com/chemicalwill/bear_face_pcb",
     "maintainer": "chemicalwill",
-    "width": 15,
-    "height": 6,
+    "width": 16,
+    "height": 5,
     "layouts": {
         "LAYOUT_83_ansi": {
+            "key_count": 83,
             "layout": [
                 {"label":"Esc", "x":0, "y":0, "w":1.5},
                 {"label":"F1", "x":1.5, "y":0},
@@ -92,13 +93,14 @@
                 {"label":"Alt", "x":10, "y":5},
                 {"label":"Fn", "x":11, "y":5},
                 {"label":"Ctrl", "x":12, "y":5},
-                {"label":"Left", "x":13, "y":5},
-                {"label":"Down", "x":14, "y":5},
-                {"label":"Right", "x":15, "y":5}
+                {"label":"\u2190", "x":13, "y":5},
+                {"label":"\u2193", "x":14, "y":5},
+                {"label":"\u2192", "x":15, "y":5}
             ]
         },
 
         "LAYOUT_84_iso": {
+            "key_count": 84,
             "layout": [
                 {"label":"Esc", "x":0, "y":0, "w":1.5},
                 {"label":"F1", "x":1.5, "y":0},
@@ -145,6 +147,7 @@
                 {"label":"P", "x":10.5, "y":2},
                 {"label":"{", "x":11.5, "y":2},
                 {"label":"}", "x":12.5, "y":2},
+                {"label":"Enter", "x":13.75, "y":2, "w":1.25, "h":2},
                 {"label":"Pg Up", "x":15, "y":2},
 
                 {"label":"Caps Lock", "x":0, "y":3, "w":1.75},
@@ -160,7 +163,6 @@
                 {"label":":", "x":10.75, "y":3},
                 {"label":"\"", "x":11.75, "y":3},
                 {"label":"~", "x":12.75, "y":3},
-                {"label":"Enter", "x":13.75, "y":2, "w":1.25, "h":2},
                 {"label":"Pg Dn", "x":15, "y":3},
 
                 {"label":"Shift", "x":0, "y":4, "w":1.25},
@@ -176,7 +178,7 @@
                 {"label":">", "x":10.25, "y":4},
                 {"label":"?", "x":11.25, "y":4},
                 {"label":"Shift", "x":12.25, "y":4, "w":1.75},
-                {"label":"Up", "x":14, "y":4},
+                {"label":"\u2191", "x":14, "y":4},
                 {"label":"End", "x":15, "y":4},
 
                 {"label":"Ctrl", "x":0, "y":5, "w":1.25},
@@ -186,9 +188,9 @@
                 {"label":"Alt Gr", "x":10, "y":5},
                 {"label":"Fn", "x":11, "y":5},
                 {"label":"Ctrl", "x":12, "y":5},
-                {"label":"Left", "x":13, "y":5},
-                {"label":"Down", "x":14, "y":5},
-                {"label":"Right", "x":15, "y":5}
+                {"label":"\u2190", "x":13, "y":5},
+                {"label":"\u2193", "x":14, "y":5},
+                {"label":"\u2192", "x":15, "y":5}
             ]
         }
     }
