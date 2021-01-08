@@ -3,31 +3,17 @@
 
 enum layers {
     _QWERTY,
-    _WORKTD,
     _LOWER,
     _RAISE,
-    _FN,
-    _META,
-    _CODE
+    _FN
 };
 
-//layer keycodes for visibility
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define FN MO(_FN)
-#define META MO(_META)
-#define CODE MO(_CODE)
-#define FN_F5 LT(_FN, KC_F5)
-#define OS_CODE OSL(_CODE)
-#define TG_META TG(_META)
 
-//clunky mod tap keycodes
 #define LS_CAPS LSFT_T(KC_CAPS)
 #define RS_ENTER RSFT_T(KC_ENTER)
-
-//macro and tap dance files
-#include "work_macros.c"
-#include "work_tap_dances.c"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -37,34 +23,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |S,Caps|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |S,Entr|
+    * |S,Caps|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |S,Entr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |  Win | Code | LAlt |Lower |    Space    |Raise |  Fn  | Left | Down |Right |
+    * | Ctrl |  Win |  Fn  | LAlt |Lower |    Space    |Raise |  Up  | Down | Left |Right |
     * `-----------------------------------------------------------------------------------'
     */
-    [_QWERTY] = LAYOUT_ortho_4x12(
-        KC_TAB,   KC_Q,     KC_W,   KC_E,    KC_R,   KC_T,    KC_Y,    KC_U,   KC_I,     KC_O,     KC_P,     KC_BSPC,
-        KC_ESC,   KC_A,     KC_S,   KC_D,    KC_F,   KC_G,    KC_H,    KC_J,   KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-        LS_CAPS,  KC_Z,     KC_X,   KC_C,    KC_V,   KC_B,    KC_N,    KC_M,   KC_COMM,  KC_DOT,   KC_UP,    RS_ENTER,
-        KC_LCTL,  KC_LGUI,  CODE,   KC_LALT, LOWER,  KC_SPC,  KC_SPC,  RAISE,  FN,       KC_LEFT,  KC_DOWN,  KC_RGHT
-    ),
-
-    /* WORK
-    * ,-----------------------------------------------------------------------------------.
-    * | Tab  |   Q  |   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
-    * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * |EscUVO|A,AltA|S,AltS| D(TD)|F,FENT|   G  |H,HMPR|   J  |   K  |   L  |   ;  |  "   |
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |S,Caps|   Z  |X,COMM|   C  |V,PROF|   B  |N,AltN|M,AltM|   ,  |   .  |  Up  |S,Entr|
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |WKMETA|OSCode| Alt  | Lower|    Space    | Raise| Fn,F5| Left | Down | Right|
-    * `-----------------------------------------------------------------------------------'
-    */
-    [_WORKTD] = LAYOUT_ortho_4x12(
-        KC_TAB,    KC_Q,     KC_W,     E_ALTE,    R_REHABDC,  T_ALTT,  KC_Y,      U_ALTU,  KC_I,     O_ALTO,   P_0LABL,  KC_BSPC,
-        ESC_UVOM,  A_ALTA,   S_ALTS,   D_MACROS,  F_FENT,     KC_G,    H_HMPROD,  KC_J,    KC_K,     KC_L,     KC_SCLN,  KC_QUOT,
-        LS_CAPS,   KC_Z,     X_COMMS,  KC_C,      V_MACROS,   KC_B,    N_NOTSIG,  M_ALTM,  KC_COMM,  KC_DOT,   KC_UP,    RS_ENTER,
-        KC_LCTL,   WK_META,  OS_CODE,  KC_LALT,   LOWER,      KC_SPC,  KC_SPC,    RAISE,   FN_F5,    KC_LEFT,  KC_DOWN,  KC_RGHT
+    [_QWERTY] = LAYOUT_planck_grid(
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+        KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        LS_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RS_ENTER,
+        KC_LCTL, KC_LGUI, FN,      KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_UP,   KC_DOWN, KC_LEFT, KC_RGHT
     ),
 
     /* LOWER
@@ -78,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |      |      |      |      |      |             |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
-    [_LOWER] = LAYOUT_ortho_4x12(
+    [_LOWER] = LAYOUT_planck_grid(
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
         KC_DEL,  _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLSH, _______,
@@ -96,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |      |      |      |      |      |             |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
-    [_RAISE] = LAYOUT_ortho_4x12(
+    [_RAISE] = LAYOUT_planck_grid(
         KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
         KC_DEL,  _______, _______, _______, _______, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_QUES, _______,
@@ -105,56 +73,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* FN
     * ,-----------------------------------------------------------------------------------.
-    * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |      |
+    * |RESET |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |      |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * |      |  F11 |  F12 |      |      |      |      |      |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |      |      |      |      |      |      |      |      |      | PgUp |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      |      |      |BaseQW|             |BaseTD|      | Home | PgDn | End  |
+    * |      |      |      |      |      |             |      |      | Home | PgDn | End  |
     * `-----------------------------------------------------------------------------------'
     */
-    [_FN] = LAYOUT_ortho_4x12(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
+    [_FN] = LAYOUT_planck_grid(
+        RESET,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
         _______, KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PGUP, _______,
-        _______, _______, _______, _______, BASE_QW, _______, _______, BASE_TD, _______, KC_HOME, KC_PGDN, KC_END
-    ),
-
-    /* META
-    * ,-----------------------------------------------------------------------------------.
-    * | Tab  |      |      |      |      |   7  |   8  |   9  |  - / |      |      | Tab  |
-    * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * | Del  |      |      |      |      |   4  |   5  |   6  |  + * |      |      | Del  |
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      |      |      |      |   1  |   2  |   3  | Enter|      |  Up  |ENTTGM|
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |TGMETA|      |      |      |      0      |   .  | Enter| Left | Down | Right|
-    * `-----------------------------------------------------------------------------------'
-    */
-    [_META] = LAYOUT_ortho_4x12(
-        KC_TAB,  _______, _______, _______, _______, KC_7,   KC_8,   KC_9,   MINS_SLSH, _______, _______, KC_BSPC,
-        KC_DEL,  _______, _______, _______, _______, KC_4,   KC_5,   KC_6,   PLUS_ASTR, _______, _______, KC_DEL,
-        _______, _______, _______, _______, _______, KC_1,   KC_2,   KC_3,   KC_ENTER,  _______, KC_UP,   ENTTGM,
-        _______, TG_META, _______, _______, _______, KC_0,   KC_0,   KC_DOT, KC_ENTER,  KC_LEFT, KC_DOWN, KC_RIGHT
-    ),
-
-    /* CODE
-    * ,-----------------------------------------------------------------------------------.
-    * |      |      |      | EMAIL|REHADC|TPNTCO|      |      |      |      |      |      |
-    * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * | QUEUE|      |      | DEFER|FENTPA|      |HMPROD|      |      |LABEL0|      |      |
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      | DUPE |CUTCOM|PROFIL|      |NOTSIG| MNLOK|      |      |      |      |
-    * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      |      |      |      |             |      |      |      |      |      |
-    * `-----------------------------------------------------------------------------------'
-    */
-    [_CODE] = LAYOUT_ortho_4x12(
-        _______, _______, _______, EMAIL,   REHABDC,  TPNTCOM, _______, _______, _______, _______, _______, _______,
-        QUEUE,   _______, _______, DEFER,   FENTPACU, _______, HMPROD,  _______, _______, LABEL0,  _______, _______,
-        _______, _______, DUPE,    CUTCOMM, PROFILE,  _______, NOTSIG,  MNLOK,   _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_END
     ),
 
     /* BLANK
@@ -168,7 +100,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |      |      |      |      |      |             |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
-    /*[_BLANK] = LAYOUT_ortho_4x12(
+    /*[_BLANK] = LAYOUT_planck_grid(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
