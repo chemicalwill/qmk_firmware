@@ -184,7 +184,7 @@ void a_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_A);
             break;
     }
-}
+};
 void a_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (atap_state.state) {
         case SINGLE_TAP:
@@ -195,7 +195,7 @@ void a_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     atap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the C/CUTCOMM tap dance
 static xtap ctap_state = {
@@ -227,7 +227,7 @@ void c_finished (qk_tap_dance_state_t *state, void *user_data) {
         register_code(KC_C);
         break;
     }
-}
+};
 void c_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ctap_state.state) {
         case SINGLE_TAP:
@@ -241,7 +241,7 @@ void c_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ctap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the D tap dance
 static xtap dtap_state = {
@@ -280,7 +280,7 @@ void d_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_D);
             break;
     }
-}
+};
 void d_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (dtap_state.state) {
         case SINGLE_TAP:
@@ -294,7 +294,7 @@ void d_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     dtap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the E/Alt+E tap dance
 static xtap etap_state = {
@@ -319,7 +319,7 @@ void e_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_E);
             break;
     }
-}
+};
 void e_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (etap_state.state) {
         case SINGLE_TAP:
@@ -333,7 +333,7 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     etap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the ESC/UVOM tap dance
 static xtap esctap_state = {
@@ -355,7 +355,7 @@ void esc_finished (qk_tap_dance_state_t *state, void *user_data) {
             tap_code(KC_F5);
             break;
     }
-}
+};
 void esc_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (esctap_state.state) {
         case SINGLE_TAP:
@@ -363,7 +363,7 @@ void esc_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     esctap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the F/FENTPACU tap dance
 static xtap ftap_state = {
@@ -392,7 +392,7 @@ void f_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_F);
             break;
     }
-}
+};
 void f_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ftap_state.state) {
         case SINGLE_TAP:
@@ -406,7 +406,7 @@ void f_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ftap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the H/HMPROD tap dance
 static xtap htap_state = {
@@ -433,7 +433,7 @@ void h_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_H);
             break;
     }
-}
+};
 void h_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (htap_state.state) {
         case SINGLE_TAP:
@@ -444,7 +444,7 @@ void h_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     htap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the M/Alt+M tap dance
 static xtap mtap_state = {
@@ -469,7 +469,7 @@ void m_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_M);
             break;
     }
-}
+};
 void m_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (mtap_state.state) {
         case SINGLE_TAP:
@@ -483,7 +483,7 @@ void m_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     mtap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the MINS/SLSH tap dance
 static xtap minstap_state = {
@@ -500,12 +500,12 @@ void mins_finished (qk_tap_dance_state_t *state, void *user_data) {
             tap_code(KC_SLSH);
             break;
     }
-}
+};
 void mins_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (minstap_state.state) {
     }
     minstap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the N/NOTSIG tap dance
 static xtap ntap_state = {
@@ -532,7 +532,7 @@ void n_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_N);
             break;
     }
-}
+};
 void n_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ntap_state.state) {
         case SINGLE_TAP:
@@ -546,7 +546,7 @@ void n_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ntap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the O/Alt+O tap dance
 static xtap otap_state = {
@@ -571,7 +571,7 @@ void o_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_O);
             break;
     }
-}
+};
 void o_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (otap_state.state) {
         case SINGLE_TAP:
@@ -585,7 +585,7 @@ void o_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     otap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the P/0LABEL tap dance
 static xtap ptap_state = {
@@ -635,7 +635,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_P);
             break;
     }
-}
+};
 void p_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ptap_state.state) {
         case SINGLE_TAP:
@@ -661,7 +661,7 @@ void p_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ptap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the PLUS/ASTR tap dance
 static xtap plustap_state = {
@@ -678,7 +678,7 @@ void plus_finished (qk_tap_dance_state_t *state, void *user_data) {
             tap_code16(KC_ASTR);
             break;
     }
-}
+};
 void plus_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (plustap_state.state) {
         case SINGLE_TAP:
@@ -686,7 +686,7 @@ void plus_reset (qk_tap_dance_state_t *state, void *user_data) {
         break;
     }
     plustap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the R/REHABDC tap dance
 static xtap rtap_state = {
@@ -724,7 +724,7 @@ void r_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_R);
             break;
     }
-}
+};
 void r_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (rtap_state.state) {
         case SINGLE_TAP:
@@ -738,7 +738,7 @@ void r_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     rtap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the S/Alt+S tap dance
 static xtap stap_state = {
@@ -763,7 +763,7 @@ void s_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_S);
             break;
     }
-}
+};
 void s_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (stap_state.state) {
         case SINGLE_TAP:
@@ -777,7 +777,7 @@ void s_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     stap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the T/Alt+T tap dance
 static xtap ttap_state = {
@@ -802,7 +802,7 @@ void t_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_T);
             break;
     }
-}
+};
 void t_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (ttap_state.state) {
         case SINGLE_TAP:
@@ -813,7 +813,7 @@ void t_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     ttap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the U/Alt+U tap dance
 static xtap utap_state = {
@@ -838,7 +838,7 @@ void u_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_U);
             break;
     }
-}
+};
 void u_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (utap_state.state) {
         case SINGLE_TAP:
@@ -852,7 +852,7 @@ void u_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     utap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the V tap dance
 static xtap vtap_state = {
@@ -902,7 +902,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_V);
             break;
     }
-}
+};
 void v_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (vtap_state.state) {
         case SINGLE_TAP:
@@ -928,7 +928,7 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     vtap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the WK_META tap dance
 static xtap wktap_state = {
@@ -951,13 +951,13 @@ void wk_finished (qk_tap_dance_state_t *state, void *user_data) {
             layer_on(_META);
             break;
     }
-}
+};
 void wk_reset (qk_tap_dance_state_t *state, void *user_data) {
     if (wktap_state.state==SINGLE_HOLD) {
         layer_off(_META);
     }
     wktap_state.state = 0;
-}
+};
 
 //Instance 'xtap' for the X/CUTCOMM tap dance
 static xtap xtap_state = {
@@ -989,7 +989,7 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_X);
             break;
     }
-}
+};
 void x_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (xtap_state.state) {
         case SINGLE_TAP:
@@ -1003,7 +1003,7 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     xtap_state.state = 0;
-}
+};
 
 
 //Tap dance defintions
