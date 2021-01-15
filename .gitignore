@@ -73,3 +73,4 @@ __pycache__
 
 # prerequisites for updating ChibiOS
 /util/fmpp*
+keyboards/anne_pro/keymaps/anne_pro.lnk
