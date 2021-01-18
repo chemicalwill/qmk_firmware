@@ -3,20 +3,10 @@
 enum custom_keycodes {
     BASE_QW = SAFE_RANGE,
     BASE_TD,
-    CUTCOMM,
-    DEFER,
-    DUPE,
     EMAIL,
     ENTTGM,
-    HMPROD,
-    LABEL0,
-    MNLOK,
-    NOTSIG,
-    FENTPACU,
-    PROFILE,
-    QUEUE,
-    REHABDC,
-    TPNTCOM,
+    MNL,
+    TPN,
 };
 
 /* here's a cool-ass example:
@@ -50,51 +40,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case BASE_TD:
         if (record->event.pressed) {
             // when keycode BASE_TD is pressed
-            set_single_persistent_default_layer(_WORKTD);
+            set_single_persistent_default_layer(_WORK);
         } else {
             // when keycode BASE_TD is released
-        }
-        break;
-
-    case CUTCOMM:
-        if (record->event.pressed) {
-            // when keycode CUTCOMM is pressed
-            tap_code(KC_TAB);
-            tap_code(KC_TAB);
-            tap_code16(C(KC_A));
-            tap_code16(C(KC_X));
-            tap_code16(S(KC_TAB));
-            tap_code16(S(KC_TAB));
-            tap_code16(C(KC_V));
-        } else {
-            // when keycode CUTCOMM is released
-        }
-        break;
-
-    case DEFER:
-        if (record->event.pressed) {
-            // when keycode DEFER is pressed
-            tap_code16(S(KC_TAB));
-            tap_code(KC_D);
-            tap_code(KC_TAB);
-        } else {
-            // when keycode DEFER is released
-        }
-        break;
-
-    case DUPE:
-        if (record->event.pressed) {
-            // when keycode DUPE is pressed
-            tap_code(KC_TAB); //tab to Discontinue Reason
-            tap_code(KC_TAB); //select "Duplicate"
-            tap_code(KC_D);
-            tap_code(KC_TAB); //tab to Label Copies
-            tap_code(KC_TAB);
-            tap_code(KC_TAB);
-            tap_code(KC_0);
-            tap_code16(A(KC_0));
-        } else {
-            // when keycode DUPE is released
         }
         break;
 
@@ -117,46 +65,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case FENTPACU:
+    case MNL:
         if (record->event.pressed) {
-            // when keycode FENTPACU is pressed
-            tap_code(KC_DOWN);
-            tap_code(KC_ENTER);
-            tap_code(KC_TAB);
-            SEND_STRING("prn pacu use only");
-        } else {
-            // when keycode FENTPACU is released
-        }
-        break;
-
-    case HMPROD:
-        if (record->event.pressed) {
-            // when keycode HMPROD is pressed
-            tap_code(KC_TAB);
-            tap_code(KC_TAB);
-            tap_code(KC_TAB);
-            tap_code(KC_DOWN);
-            tap_code16(A(KC_M));
-            tap_code16(A(KC_O));
-        } else {
-            // when keycode HMPROD is released
-        }
-        break;
-
-    case LABEL0:
-        if (record->event.pressed) {
-            // when keycode LABEL0 is pressed
-            tap_code16(A(KC_P));
-            tap_code(KC_SPC);
-            tap_code16(A(KC_O));
-        } else {
-            // when keycode LABEL0 is released
-        }
-        break;
-
-    case MNLOK:
-        if (record->event.pressed) {
-            // when keycode MNLOK is pressed
+            // when keycode MNL is pressed
             tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
             tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
             tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
@@ -168,74 +79,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             tap_code(KC_DOWN);
             tap_code16(A(KC_O));
         } else {
-            // when keycode MNLOK is released
+            // when keycode MNL is released
         }
         break;
 
-    case NOTSIG:
+    case TPN:
         if (record->event.pressed) {
-            // when keycode NOTSIG is pressed
-            tap_code16(S(KC_TAB));
-            SEND_STRING("nnn\t");
-        } else {
-            // when keycode NOTSIG is released
-        }
-        break;
-
-    case PROFILE:
-        if (record->event.pressed) {
-            // when keycode PROFILE is pressed
-            tap_code(KC_V);
-            tap_code(KC_V);
-            tap_code16(A(KC_A));
-        } else {
-            // when keycode PROFILE is released
-        }
-        break;
-
-    case QUEUE:
-        if (record->event.pressed) {
-            // when keycode QUEUE is pressed
-            tap_code16(C(KC_P));
-            wait_ms(250);
-            tap_code16(A(KC_M));
-            wait_ms(250);
-            tap_code(KC_F5);
-        } else {
-            // when keycode QUEUE is released
-        }
-        break;
-
-    case REHABDC:
-        if (record->event.pressed) {
-            // when keycode REHABDC is pressed
-            tap_code(KC_TAB);   //tab to Discontinue Reason dropdown
-            tap_code(KC_TAB);
-            tap_code(KC_DOWN);  //select "Patient Discharged"
-            tap_code(KC_DOWN);
-            tap_code(KC_DOWN);
-            tap_code(KC_DOWN);
-            tap_code(KC_DOWN);
-            tap_code(KC_DOWN);
-            tap_code(KC_TAB);   //tab to Label Copies
-            tap_code(KC_TAB);
-            tap_code(KC_TAB);
-            tap_code(KC_0);
-            tap_code16(A(KC_O));
-        } else {
-            // when keycode REHABDC is released
-        }
-        break;
-
-    case TPNTCOM:
-        if (record->event.pressed) {
-            // when keycode TPNTCOM is pressed
+            // when keycode TPN is pressed
             SEND_STRING("t\t1600\tt+\t1559");
             SEND_STRING("\t\t\t\t" SS_LCTL("ax") SS_LSFT("\t\t") SS_LCTL("v") "\t\t\t\t\tw\t");
         } else {
-            // when keycode TPNTCOM is released
+            // when keycode TPN is released
         }
         break;
+
     }
     return true;
 };

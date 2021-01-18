@@ -2,7 +2,7 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _WORKTD,
+    _WORK,
     _QWERTY,
     _LOWER,
     _RAISE,
@@ -29,7 +29,7 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    /* WORKTD
+    /* WORK
     * ,-----------------------------------------------------------------------------------.
     * | Esc  |Q,UVOM|   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -40,11 +40,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * | Ctrl |WKMETA| LAlt |OSCode| Lower|    Space    | Raise| Fn,F5| Left | Down | Right|
     * `-----------------------------------------------------------------------------------'
     */
-    [_WORKTD] = LAYOUT_ortho_4x12(
-        KC_ESC,   Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
-        KC_TAB,   A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        LS_CAPS,  KC_Z,    X_COMMS, KC_C,     V_PROF,    KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
-        KC_LCTL,  WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
+    [_WORK] = LAYOUT_ortho_4x12(
+        KC_ESC,  Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
+        KC_TAB,  A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        LS_CAPS, KC_Z,    X_COMMS, KC_C,     V_PROF,    KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
+        KC_LCTL, WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
     /* QWERTY
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |      |      |      |      |      |      |      |      |      | PgUp |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      |      |      |BaseQW|             |BaseTD|      | Home | PgDn | End  |
+    * |      |      |      |      |BASEQW|             |BASETD|      | Home | PgDn | End  |
     * `-----------------------------------------------------------------------------------'
     */
     [_FN] = LAYOUT_ortho_4x12(
@@ -139,20 +139,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* CODE
     * ,-----------------------------------------------------------------------------------.
-    * |      |      |      | EMAIL|REHADC|TPNTCO|      |      |      |      |      |      |
+    * |      |      |      | EMAIL|      | TPN  |      |      |      |      |      |      |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * | QUEUE|      |      | DEFER|FENTPA|      |HMPROD|      |      |LABEL0|      |      |
+    * |      |      |      |      |      |      |      |      |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |      |      | DUPE |CUTCOM|PROFIL|      |NOTSIG| MNLOK|      |      |      |      |
+    * |      |      |      |      |      |      |      | MNL  |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |      |      |      |      |             |      |      |      |      |      |
     * `-----------------------------------------------------------------------------------'
     */
     [_CODE] = LAYOUT_ortho_4x12(
-        _______, _______, _______, EMAIL,   REHABDC,  TPNTCOM, _______, _______, _______, _______, _______, _______,
-        QUEUE,   _______, _______, DEFER,   FENTPACU, _______, HMPROD,  _______, _______, LABEL0,  _______, _______,
-        _______, _______, DUPE,    CUTCOMM, PROFILE,  _______, NOTSIG,  MNLOK,   _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______
+        _______, _______, _______, EMAIL,   _______, TPN,     _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, MNL,     _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
     /* BLANK
