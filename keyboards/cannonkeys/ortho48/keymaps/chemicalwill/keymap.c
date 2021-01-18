@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* WORKTD
     * ,-----------------------------------------------------------------------------------.
-    * | Esc  |   Q  |   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
+    * | Esc  |Q,UVOM|   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Tab  |A,AltA|S,AltS| D(TD)|F,FENT|   G  |H,HMPR|   J  |   K  |   L  |   ;  |  "   |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -41,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
     [_WORKTD] = LAYOUT_ortho_4x12(
-        KC_ESC,   KC_Q,    KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
+        KC_ESC,   Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
         KC_TAB,   A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        LS_CAPS,  KC_Z,    X_COMMS, KC_C,     V_MACROS,  KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
+        LS_CAPS,  KC_Z,    X_COMMS, KC_C,     V_PROF,    KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
         KC_LCTL,  WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------------------------------------------------.
     * |      |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |      |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * |      |  F11 |  F12 |      |      |      |      |      |      |      |      |      |
+    * | Esc  |  F11 |  F12 |      |      |      |      |      |      |      |      |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |      |      |      |      |      |      |      |      |      |      | PgUp |      |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
     [_FN] = LAYOUT_ortho_4x12(
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-        _______, KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        KC_ESC,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PGUP, _______,
         _______, _______, _______, _______, BASE_QW, _______, _______, BASE_TD, _______, KC_HOME, KC_PGDN, KC_END
     ),

@@ -25,7 +25,6 @@ enum {
     A_ALTA,
     D_MACROS,
     E_ALTE,
-    ESC_UVOM,
     F_FENT,
     H_HMPROD,
     M_ALTM,
@@ -34,11 +33,12 @@ enum {
     O_ALTO,
     P_0LABL,
     PLUS_ASTR,
+    Q_UVOM,
     R_REHABDC,
     S_ALTS,
     T_ALTT,
     U_ALTU,
-    V_MACROS,
+    V_PROF,
     WK_META,
     X_COMMS
 };
@@ -58,9 +58,6 @@ void d_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void e_finished (qk_tap_dance_state_t *state, void *user_data);
 void e_reset (qk_tap_dance_state_t *state, void *user_data);
-
-void esc_finished (qk_tap_dance_state_t *state, void *user_data);
-void esc_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void f_finished (qk_tap_dance_state_t *state, void *user_data);
 void f_reset (qk_tap_dance_state_t *state, void *user_data);
@@ -85,6 +82,9 @@ void p_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void plus_finished (qk_tap_dance_state_t *state, void *user_data);
 void plus_reset (qk_tap_dance_state_t *state, void *user_data);
+
+void q_finished (qk_tap_dance_state_t *state, void *user_data);
+void q_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void r_finished (qk_tap_dance_state_t *state, void *user_data);
 void r_reset (qk_tap_dance_state_t *state, void *user_data);
@@ -145,7 +145,7 @@ int cur_dance (qk_tap_dance_state_t *state) {
     else
         return TRIPLE_TAP;
     }
-  //And again for count = 4
+    //And again for count = 4
     else if (state->count == 4) {
         if (state->interrupted)
             return QUAD_SINGLE_TAP;
@@ -334,36 +334,6 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     etap_state.state = 0;
-};
-
-//Instance 'xtap' for the ESC/UVOM tap dance
-static xtap esctap_state = {
-    .is_press_action = true,
-    .state = 0
-};
-void esc_finished (qk_tap_dance_state_t *state, void *user_data) {
-    esctap_state.state = cur_dance(state);
-    switch (esctap_state.state) {
-        case SINGLE_TAP:
-            register_code(KC_ESC);
-            break;
-        case SINGLE_HOLD:
-            //UVOM macro
-            tap_code16(C(KC_P));
-            wait_ms(250);
-            tap_code16(A(KC_M));
-            wait_ms(250);
-            tap_code(KC_F5);
-            break;
-    }
-};
-void esc_reset (qk_tap_dance_state_t *state, void *user_data) {
-    switch (esctap_state.state) {
-        case SINGLE_TAP:
-            unregister_code(KC_ESC);
-            break;
-    }
-    esctap_state.state = 0;
 };
 
 //Instance 'xtap' for the F/FENTPACU tap dance
@@ -689,6 +659,36 @@ void plus_reset (qk_tap_dance_state_t *state, void *user_data) {
     plustap_state.state = 0;
 };
 
+//Instance 'xtap' for the Q/UVOM tap dance
+static xtap qtap_state = {
+    .is_press_action = true,
+    .state = 0
+};
+void q_finished (qk_tap_dance_state_t *state, void *user_data) {
+    qtap_state.state = cur_dance(state);
+    switch (qtap_state.state) {
+        case SINGLE_TAP:
+            register_code(KC_Q);
+            break;
+        case SINGLE_HOLD:
+            //UVOM macro
+            tap_code16(C(KC_P));
+            wait_ms(250);
+            tap_code16(A(KC_M));
+            wait_ms(250);
+            tap_code(KC_F5);
+            break;
+    }
+};
+void q_reset (qk_tap_dance_state_t *state, void *user_data) {
+    switch (qtap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_Q);
+            break;
+    }
+    qtap_state.state = 0;
+};
+
 //Instance 'xtap' for the R/REHABDC tap dance
 static xtap rtap_state = {
     .is_press_action = true,
@@ -855,7 +855,7 @@ void u_reset (qk_tap_dance_state_t *state, void *user_data) {
     utap_state.state = 0;
 };
 
-//Instance 'xtap' for the V tap dance
+//Instance 'xtap' for the V/PROFILE tap dance
 static xtap vtap_state = {
     .is_press_action = true,
     .state = 0
@@ -1012,7 +1012,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [A_ALTA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [D_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, d_finished, d_reset),
     [E_ALTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, e_finished, e_reset),
-    [ESC_UVOM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset),
     [F_FENT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, f_finished, f_reset),
     [H_HMPROD] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, h_finished, h_reset),
     [M_ALTM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, m_finished, m_reset),
@@ -1021,11 +1020,12 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [O_ALTO] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, o_finished, o_reset),
     [P_0LABL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, p_finished, p_reset),
     [PLUS_ASTR] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, plus_finished, plus_reset),
+    [Q_UVOM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, q_finished, q_reset),
     [R_REHABDC] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, r_finished, r_reset),
     [S_ALTS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, s_finished, s_reset),
     [T_ALTT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, t_finished, t_reset),
     [U_ALTU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished, u_reset),
-    [V_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, v_finished, v_reset),
+    [V_PROF] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, v_finished, v_reset),
     [WK_META] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, wk_finished, wk_reset),
     [X_COMMS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset),
 };
@@ -1034,7 +1034,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define A_ALTA TD(A_ALTA)
 #define D_MACROS TD(D_MACROS)
 #define E_ALTE TD(E_ALTE)
-#define ESC_UVOM TD(ESC_UVOM)
 #define F_FENT TD(F_FENT)
 #define H_HMPROD TD(H_HMPROD)
 #define M_ALTM TD(M_ALTM)
@@ -1043,10 +1042,11 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define O_ALTO TD(O_ALTO)
 #define P_0LABL TD(P_0LABL)
 #define PLUS_ASTR TD(PLUS_ASTR)
+#define Q_UVOM TD(Q_UVOM)
 #define R_REHABDC TD(R_REHABDC)
 #define S_ALTS TD(S_ALTS)
 #define T_ALTT TD(T_ALTT)
 #define U_ALTU TD(U_ALTU)
-#define V_MACROS TD(V_MACROS)
+#define V_PROF TD(V_PROF)
 #define WK_META TD(WK_META)
 #define X_COMMS TD(X_COMMS)
