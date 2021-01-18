@@ -11,7 +11,6 @@ enum layers {
     _CODE
 };
 
-//layer keycodes for visibility
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 #define FN MO(_FN)
@@ -21,11 +20,9 @@ enum layers {
 #define OS_CODE OSL(_CODE)
 #define TG_META TG(_META)
 
-//clunky mod tap keycodes
 #define LS_CAPS LSFT_T(KC_CAPS)
 #define RS_ENTER RSFT_T(KC_ENTER)
 
-//macro, tap dance, encoder files
 #include "work_macros.c"
 #include "work_tap_dances.c"
 #include "encoder.c"
@@ -34,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* WORKTD
     * ,-----------------------------------------------------------------------------------.
-    * |EscUVM|   Q  |   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
+    * | Esc  |   Q  |   W  |E,AltE|R,RHDC|T,AltT|   Y  |U,AltU|   I  |O,AltO|P,0LAB| Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Tab  |A,AltA|S,AltS| D(TD)|F,FENT|   G  |H,HMPR|   J  |   K  |   L  |   ;  |  "   |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -44,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
     [_WORKTD] = LAYOUT_ortho_4x12(
-        ESC_UVOM, KC_Q,    KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
+        KC_ESC,   KC_Q,    KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
         KC_TAB,   A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         LS_CAPS,  KC_Z,    X_COMMS, KC_C,     V_MACROS,  KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
         KC_LCTL,  WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
@@ -52,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* QWERTY
     * ,-----------------------------------------------------------------------------------.
-    * | Esc  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
+    * | MPLY |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -62,10 +59,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
     [_QWERTY] = LAYOUT_ortho_4x12(
-        KC_ESC,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
-        KC_TAB,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-        LS_CAPS,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
-        KC_LCTL,  KC_LGUI, KC_LALT, CODE,    LOWER,   KC_SPC,  KC_SPC,  RAISE,  FN,      KC_LEFT, KC_DOWN,  KC_RGHT
+        KC_MPLY, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
+        KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+        LS_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
+        KC_LCTL, KC_LGUI, KC_LALT, CODE,    LOWER,   KC_SPC,  KC_SPC,  RAISE,  FN,      KC_LEFT, KC_DOWN,  KC_RGHT
     ),
 
     /* LOWER
