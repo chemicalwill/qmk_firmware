@@ -37,14 +37,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |S CAPS|   Z  |X cmnt|   C  |V prof|   B  |N AltN|M AltM|   ,  |   .  |  Up  |S Entr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |WKMETA| LAlt |OSCode| Lower|    Space    | Raise| Fn F5| Left | Down | Right|
+    * | Ctrl |WKMeta| Fn F5|OSCode| Lower|    Space    | Raise| RAlt | Left | Down | Right|
     * `-----------------------------------------------------------------------------------'
     */
     [_WORK] = LAYOUT_ortho_4x12(
         KC_ESC,  Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
         KC_TAB,  A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         LS_CAPS, KC_Z,    X_COMMS, KC_C,     V_PROF,    KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
-        KC_LCTL, WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
+        KC_LCTL, WK_META, FN_F5,   OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   KC_RALT, KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
     /* QWERTY
@@ -53,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |S,Caps|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |S,Entr|
+    * |S CAPS|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |S Entr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |  Win | LAlt | Code |Lower |    Space    | Raise|  Fn  | Left | Down |Right |
+    * | Ctrl |WKMeta|  Fn  | Code |Lower |    Space    | Raise| RAlt | Left | Down |Right |
     * `-----------------------------------------------------------------------------------'
     */
     [_QWERTY] = LAYOUT_ortho_4x12(
         KC_MPLY, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_BSPC,
         KC_TAB,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         LS_CAPS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
-        KC_LCTL, WK_META, KC_LALT, CODE,    LOWER,   KC_SPC,  KC_SPC,  RAISE,  FN,      KC_LEFT, KC_DOWN,  KC_RGHT
+        KC_LCTL, WK_META, FN,      CODE,    LOWER,   KC_SPC,  KC_SPC,  RAISE,  KC_RALT, KC_LEFT, KC_DOWN,  KC_RGHT
     ),
 
     /* LOWER
