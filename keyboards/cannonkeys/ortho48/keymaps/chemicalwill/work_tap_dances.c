@@ -1,18 +1,16 @@
 
-//Setting up tap dance for tap vs. hold
 typedef struct {
     bool is_press_action;
     int state;
 } xtap;
 
-//Tap dance states enum
 enum {
     SINGLE_TAP = 1,
     SINGLE_HOLD = 2,
     DOUBLE_TAP = 3,         //key is tapped twice, but NOT interrupted
     DOUBLE_HOLD = 4,        //key is tapped twice and held
     DOUBLE_SINGLE_TAP = 5,  //key is tapped twice and interrupted right after
-    TRIPLE_TAP = 6,
+    TRIPLE_TAP = 6,         //etc.
     TRIPLE_HOLD = 7,
     TRIPLE_SINGLE_TAP = 8,
     QUAD_TAP = 9,
@@ -20,7 +18,6 @@ enum {
     QUAD_SINGLE_TAP = 11
 };
 
-//Tap dance declarations
 enum {
     A_ALTA,
     D_MACROS,
@@ -43,10 +40,8 @@ enum {
     X_COMMS
 };
 
-//Function associated with all tap dances
 int cur_dance (qk_tap_dance_state_t *state);
 
-//Functions associated with individual tap dances
 void a_finished (qk_tap_dance_state_t *state, void *user_data);
 void a_reset (qk_tap_dance_state_t *state, void *user_data);
 
@@ -107,17 +102,14 @@ void wk_reset (qk_tap_dance_state_t *state, void *user_data);
 void x_finished (qk_tap_dance_state_t *state, void *user_data);
 void x_reset (qk_tap_dance_state_t *state, void *user_data);
 
-//Determine tap dance state
 int cur_dance (qk_tap_dance_state_t *state) {
     if (state->count == 1) {
-        //If count = 1, and it has been interrupted - it doesn't matter if it is pressed or not: Send SINGLE_TAP
+        //if count = 1, and it has been interrupted - it doesn't matter if it is pressed or not: Send SINGLE_TAP
         if (state->interrupted) {
-        //     if (!state->pressed) return SINGLE_TAP;
-        //need "permissive hold" here.
+        //if (!state->pressed) return SINGLE_TAP;
         //     else return SINGLE_HOLD;
         //If the interrupting key is released before the tap-dance key, then it is a single HOLD
-        //      However, if the tap-dance key is released first, then it is a single TAP
-        //      But how to get access to the state of the interrupting key????
+        //     However, if the tap-dance key is released first, then it is a single TAP
         return SINGLE_TAP;
     } else {
         if (!state->pressed)
@@ -134,11 +126,11 @@ int cur_dance (qk_tap_dance_state_t *state) {
         else if (state->pressed)
             return DOUBLE_HOLD;
     else
-      return DOUBLE_TAP;          //key is tapped twice, but is NOT interrupted
+      return DOUBLE_TAP;                //key is tapped twice, but is NOT interrupted
     }
     //Again for count = 3
-    else if (state->count == 3) {   //really included for 'p' for choosing order protocols
-        if (state->interrupted)
+    else if (state->count == 3) {       //really included for 'p' for choosing order protocols
+        if (state->interrupted)         //  and 'n' for 'not clinically significant'
             return TRIPLE_SINGLE_TAP;
         else if (state->pressed)
             return TRIPLE_HOLD;
@@ -155,10 +147,9 @@ int cur_dance (qk_tap_dance_state_t *state) {
         return QUAD_HOLD;
     }
     else
-        return 12; //return n+1 where n is your number of tap dance states
+        return 12;                      //return n+1 where n is your number of tap dance states
 };
 
-//Instance 'xtap' for the A/Alt+A tap dance
 static xtap atap_state = {
     .is_press_action = true,
     .state = 0
@@ -198,7 +189,6 @@ void a_reset (qk_tap_dance_state_t *state, void *user_data) {
     atap_state.state = 0;
 };
 
-//Instance 'xtap' for the C/CUTCOMM tap dance
 static xtap ctap_state = {
     .is_press_action = true,
     .state = 0
@@ -210,7 +200,7 @@ void c_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_C);
             break;
     case SINGLE_HOLD:
-        //COMMENT macro
+        //cut and paste order comments macro
         tap_code(KC_TAB);
         tap_code(KC_TAB);
         tap_code16(C(KC_A));
@@ -244,7 +234,6 @@ void c_reset (qk_tap_dance_state_t *state, void *user_data) {
     ctap_state.state = 0;
 };
 
-//Instance 'xtap' for the D tap dance
 static xtap dtap_state = {
     .is_press_action = true,
     .state = 0
@@ -256,7 +245,7 @@ void d_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_D);
             break;
         case SINGLE_HOLD:
-            //DEFER macro
+            //defer to primary physician macro
             tap_code16(S(KC_TAB));
             tap_code(KC_D);
             tap_code(KC_TAB);
@@ -266,11 +255,11 @@ void d_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_D);
             break;
         case DOUBLE_HOLD:
-            //DUPE macro
-            tap_code(KC_TAB); //tab to Discontinue Reason
-            tap_code(KC_TAB); //select "Duplicate"
+            //dc duplicate order macro
+            tap_code(KC_TAB);
+            tap_code(KC_TAB);
             tap_code(KC_D);
-            tap_code(KC_TAB); //tab to Label Copies
+            tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code(KC_0);
@@ -297,7 +286,6 @@ void d_reset (qk_tap_dance_state_t *state, void *user_data) {
     dtap_state.state = 0;
 };
 
-//Instance 'xtap' for the E/Alt+E tap dance
 static xtap etap_state = {
     .is_press_action = true,
     .state = 0
@@ -336,7 +324,6 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
     etap_state.state = 0;
 };
 
-//Instance 'xtap' for the F/FENTPACU tap dance
 static xtap ftap_state = {
     .is_press_action = true,
     .state = 0
@@ -348,7 +335,7 @@ void f_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_F);
             break;
         case SINGLE_HOLD:
-            //FENTPACU macro
+            //override for prn pacu use only macro
             tap_code(KC_DOWN);
             tap_code(KC_ENTER);
             tap_code(KC_TAB);
@@ -379,7 +366,6 @@ void f_reset (qk_tap_dance_state_t *state, void *user_data) {
     ftap_state.state = 0;
 };
 
-//Instance 'xtap' for the H/HMPROD tap dance
 static xtap htap_state = {
     .is_press_action = true,
     .state = 0
@@ -391,7 +377,7 @@ void h_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_H);
             break;
         case SINGLE_HOLD:
-            // HMPROD macro
+            //product selection macro
             tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code(KC_TAB);
@@ -417,7 +403,6 @@ void h_reset (qk_tap_dance_state_t *state, void *user_data) {
     htap_state.state = 0;
 };
 
-//Instance 'xtap' for the M/Alt+M tap dance
 static xtap mtap_state = {
     .is_press_action = true,
     .state = 0
@@ -456,7 +441,6 @@ void m_reset (qk_tap_dance_state_t *state, void *user_data) {
     mtap_state.state = 0;
 };
 
-//Instance 'xtap' for the MINS/SLSH tap dance
 static xtap minstap_state = {
     .is_press_action = true,
     .state = 0
@@ -478,7 +462,6 @@ void mins_reset (qk_tap_dance_state_t *state, void *user_data) {
     minstap_state.state = 0;
 };
 
-//Instance 'xtap' for the N/NOTSIG tap dance
 static xtap ntap_state = {
     .is_press_action = true,
     .state = 0
@@ -490,7 +473,7 @@ void n_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_N);
             break;
         case SINGLE_HOLD:
-            //NOTSIG macro
+            //not clinically significant macro
             tap_code16(S(KC_TAB));
             SEND_STRING("nnn\t");
             break;
@@ -519,7 +502,6 @@ void n_reset (qk_tap_dance_state_t *state, void *user_data) {
     ntap_state.state = 0;
 };
 
-//Instance 'xtap' for the O/Alt+O tap dance
 static xtap otap_state = {
     .is_press_action = true,
     .state = 0
@@ -558,7 +540,6 @@ void o_reset (qk_tap_dance_state_t *state, void *user_data) {
     otap_state.state = 0;
 };
 
-//Instance 'xtap' for the P/0LABEL tap dance
 static xtap ptap_state = {
     .is_press_action = true,
     .state = 0
@@ -570,7 +551,7 @@ void p_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_P);
             break;
         case SINGLE_HOLD:
-            //0LABEL macro
+            //macro to avoid printing a zero label
             tap_code16(A(KC_P));
             tap_code(KC_SPC);
             tap_code16(A(KC_O));
@@ -634,7 +615,6 @@ void p_reset (qk_tap_dance_state_t *state, void *user_data) {
     ptap_state.state = 0;
 };
 
-//Instance 'xtap' for the PLUS/ASTR tap dance
 static xtap plustap_state = {
     .is_press_action = true,
     .state = 0
@@ -659,7 +639,6 @@ void plus_reset (qk_tap_dance_state_t *state, void *user_data) {
     plustap_state.state = 0;
 };
 
-//Instance 'xtap' for the Q/UVOM tap dance
 static xtap qtap_state = {
     .is_press_action = true,
     .state = 0
@@ -671,7 +650,7 @@ void q_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_Q);
             break;
         case SINGLE_HOLD:
-            //UVOM macro
+            //return to queue macro
             tap_code16(C(KC_P));
             wait_ms(250);
             tap_code16(A(KC_M));
@@ -689,7 +668,6 @@ void q_reset (qk_tap_dance_state_t *state, void *user_data) {
     qtap_state.state = 0;
 };
 
-//Instance 'xtap' for the R/REHABDC tap dance
 static xtap rtap_state = {
     .is_press_action = true,
     .state = 0
@@ -701,16 +679,16 @@ void r_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_R);
             break;
         case SINGLE_HOLD:
-            //REHABDC macro
-            tap_code(KC_TAB);   //tab to Discontinue Reason dropdown
+            //patient discharged order macro
             tap_code(KC_TAB);
-            tap_code(KC_DOWN);  //select "Patient Discharged"
+            tap_code(KC_TAB);
             tap_code(KC_DOWN);
             tap_code(KC_DOWN);
             tap_code(KC_DOWN);
             tap_code(KC_DOWN);
             tap_code(KC_DOWN);
-            tap_code(KC_TAB);   //tab to Label Copies
+            tap_code(KC_DOWN);
+            tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code(KC_0);
@@ -816,7 +794,6 @@ void t_reset (qk_tap_dance_state_t *state, void *user_data) {
     ttap_state.state = 0;
 };
 
-//Instance 'xtap' for the U/Alt+U tap dance
 static xtap utap_state = {
     .is_press_action = true,
     .state = 0
@@ -855,7 +832,6 @@ void u_reset (qk_tap_dance_state_t *state, void *user_data) {
     utap_state.state = 0;
 };
 
-//Instance 'xtap' for the V/PROFILE tap dance
 static xtap vtap_state = {
     .is_press_action = true,
     .state = 0
@@ -867,7 +843,7 @@ void v_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_V);
             break;
         case SINGLE_HOLD:
-            //PROFILE macro
+            //'View Profile' + Apply macro
             tap_code(KC_V);
             tap_code(KC_V);
             tap_code16(A(KC_A));
@@ -931,7 +907,6 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
     vtap_state.state = 0;
 };
 
-//Instance 'xtap' for the WK_META tap dance
 static xtap wktap_state = {
     .is_press_action = true,
     .state = 0
@@ -960,7 +935,6 @@ void wk_reset (qk_tap_dance_state_t *state, void *user_data) {
     wktap_state.state = 0;
 };
 
-//Instance 'xtap' for the X/CUTCOMM tap dance
 static xtap xtap_state = {
     .is_press_action = true,
     .state = 0
@@ -972,7 +946,7 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_X);
             break;
         case SINGLE_HOLD:
-            //CUTCOMM macro
+            //cut and paste product comments macro
             tap_code(KC_TAB);
             tap_code(KC_TAB);
             tap_code16(C(KC_A));
@@ -1007,7 +981,6 @@ void x_reset (qk_tap_dance_state_t *state, void *user_data) {
 };
 
 
-//Tap dance defintions
 qk_tap_dance_action_t tap_dance_actions[] = {
     [A_ALTA] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, a_finished, a_reset),
     [D_MACROS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, d_finished, d_reset),
@@ -1030,7 +1003,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [X_COMMS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset),
 };
 
-//Define tap dances as keycodes to fit in the keymap better
 #define A_ALTA TD(A_ALTA)
 #define D_MACROS TD(D_MACROS)
 #define E_ALTE TD(E_ALTE)
