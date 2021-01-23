@@ -3,7 +3,6 @@ bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-
     if (layer_state_is(_RAISE)) {
         if (clockwise) {
             if (!is_alt_tab_active) {
