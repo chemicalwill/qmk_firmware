@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |LsCaps|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |RsEntr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |GUI TD| LAlt | Code |Lower |    Space    | Raise|  Fn  | Left | Down |Right |
+    * | Ctrl |GUI TD| LAlt | Code |Lower |    Space    | Raise|  Fn  | Left | Down | Right|
     * `-----------------------------------------------------------------------------------'
     */
     [_QWERTY] = LAYOUT_ortho_4x12(

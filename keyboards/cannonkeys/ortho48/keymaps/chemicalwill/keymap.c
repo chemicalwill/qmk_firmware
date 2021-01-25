@@ -31,13 +31,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* WORK
     * ,-----------------------------------------------------------------------------------.
-    * | Esc  |Q uvom|   W  |E AltE|R dcdc|T AltT|   Y  |U AltU|   I  |O AltO|P labl| Bksp |
+    * | Esc  |Q uvom|   W  |E altE|R dcdc|T altT|   Y  |U altU|   I  |O altO|P labl| Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * | Tab  |A AltA|S AltS| D TD |F fent|   G  |H prod|   J  |   K  |   L  |   ;  |  "   |
+    * | Tab  |A altA|S altS| D TD |F fent|   G  |H prod|   J  |   K  |   L  |   ;  |   "  |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * |S CAPS|   Z  |X cmnt|   C  |V prof|   B  |N AltN|M AltM|   ,  |   .  |  Up  |S Entr|
+    * |LsCaps|   Z  |X cmnt|   C  |V prof|   B  |N altN|M altM|   ,  |   .  |  Up  |RsEntr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |WKMeta| LAlt |OSCode| Lower|    Space    | Raise| Fn F5 | Left | Down | Right|
+    * | Ctrl |WkMeta| LAlt |OSCode| Lower|    Space    | Raise| Fn F5| Left | Down | Right|
     * `-----------------------------------------------------------------------------------'
     */
     [_WORK] = LAYOUT_ortho_4x12(
@@ -51,11 +51,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ,-----------------------------------------------------------------------------------.
     * | MPLY |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
-    * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
+    * | Tab  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |   "  |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
     * |LsCaps|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |RsEntr|
     * |------+------+------+------+------+------+------+------+------+------+------+------|
-    * | Ctrl |GUI TD| LAlt | Code |Lower |    Space    | Raise|  Fn  | Left | Down |Right |
+    * | Ctrl |WkMeta| LAlt | Code | Lower|    Space    | Raise|  Fn  | Left | Down |Right |
     * `-----------------------------------------------------------------------------------'
     */
     [_QWERTY] = LAYOUT_ortho_4x12(
