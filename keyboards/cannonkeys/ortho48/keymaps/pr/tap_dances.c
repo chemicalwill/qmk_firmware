@@ -60,7 +60,8 @@ int cur_dance (qk_tap_dance_state_t *state) {
       return DOUBLE_TAP;                // key is tapped twice, but NOT interrupted
     }
     else
-        return 3;                      // return n+1 where n is your number of tap dance states
+        return 12;                      // return n+1 where n is your number of tap dance states
+                                        //     I use up to 11 at some points
 };
 
 // instance 'tap' for each tap dance
