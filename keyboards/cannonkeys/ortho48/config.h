@@ -33,6 +33,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROW_PINS { B12, C13, A2, A1 }
 #define DIODE_DIRECTION COL2ROW
 
+#define ENCODERS_PAD_A { A9 }
+#define ENCODERS_PAD_B { A10 }
+
 #define BACKLIGHT_PIN A8
 #define BACKLIGHT_PWM_DRIVER PWMD1
 #define BACKLIGHT_PWM_CHANNEL 1
