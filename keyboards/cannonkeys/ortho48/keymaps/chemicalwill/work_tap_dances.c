@@ -1,4 +1,3 @@
-
 typedef struct {
     bool is_press_action;
     int state;
