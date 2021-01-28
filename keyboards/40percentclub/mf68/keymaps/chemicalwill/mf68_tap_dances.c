@@ -2,7 +2,7 @@
 typedef struct {
     bool is_press_action;
     int state;
-} xtap;
+} tap;
 
 //Tap Dance states
 enum {
@@ -46,7 +46,7 @@ int cur_dance (qk_tap_dance_state_t *state) {
 };
 
 //instance 'tap' for the 'grv/ESC' tap dance
-static xtap grvtap_state = {
+static tap grvtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -60,7 +60,7 @@ void grv_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_ESC);
             break;
     }
-}
+};
 void grv_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (grvtap_state.state) {
         case SINGLE_TAP:
@@ -71,10 +71,10 @@ void grv_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     grvtap_state.state = 0;
-}
+};
 
 //instance 'tap' for the 'no/INS' tap dance
-static xtap noinstap_state = {
+static tap noinstap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -88,7 +88,7 @@ void noins_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_INS);
             break;
     }
-}
+};
 void noins_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (noinstap_state.state) {
         case SINGLE_TAP:
@@ -99,10 +99,10 @@ void noins_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     noinstap_state.state = 0;
-}
+};
 
 //instance 'tap' for the 'pgup' tap dance
-static xtap pguptap_state = {
+static tap pguptap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -116,7 +116,7 @@ void pgup_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_HOME);
             break;
     }
-}
+};
 void pgup_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (pguptap_state.state) {
         case SINGLE_TAP:
@@ -127,10 +127,10 @@ void pgup_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     pguptap_state.state = 0;
-}
+};
 
 //instance 'tap' for the 'pgdn' tap dance
-static xtap pgdntap_state = {
+static tap pgdntap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -144,7 +144,7 @@ void pgdn_finished (qk_tap_dance_state_t *state, void *user_data) {
             register_code(KC_END);
             break;
     }
-}
+};
 void pgdn_reset (qk_tap_dance_state_t *state, void *user_data) {
     switch (pgdntap_state.state) {
         case SINGLE_TAP:
@@ -155,7 +155,7 @@ void pgdn_reset (qk_tap_dance_state_t *state, void *user_data) {
             break;
     }
     pgdntap_state.state = 0;
-}
+};
 
 //Tap dance definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
