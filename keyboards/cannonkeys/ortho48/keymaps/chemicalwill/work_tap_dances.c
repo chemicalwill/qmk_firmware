@@ -1,7 +1,7 @@
 typedef struct {
     bool is_press_action;
     int state;
-} xtap;
+} tap;
 
 enum {
     SINGLE_TAP = 1,
@@ -9,7 +9,7 @@ enum {
     DOUBLE_TAP = 3,         //key is tapped twice, but NOT interrupted
     DOUBLE_HOLD = 4,        //key is tapped twice and held
     DOUBLE_SINGLE_TAP = 5,  //key is tapped twice and interrupted right after
-    TRIPLE_TAP = 6,         //etc.
+    TRIPLE_TAP = 6,         //  etc.
     TRIPLE_HOLD = 7,
     TRIPLE_SINGLE_TAP = 8,
     QUAD_TAP = 9,
@@ -102,54 +102,51 @@ void x_finished (qk_tap_dance_state_t *state, void *user_data);
 void x_reset (qk_tap_dance_state_t *state, void *user_data);
 
 int cur_dance (qk_tap_dance_state_t *state) {
+
     if (state->count == 1) {
-        //if count = 1, and it has been interrupted - it doesn't matter if it is pressed or not: Send SINGLE_TAP
         if (state->interrupted) {
-        //if (!state->pressed) return SINGLE_TAP;
-        //     else return SINGLE_HOLD;
-        //If the interrupting key is released before the tap-dance key, then it is a single HOLD
-        //     However, if the tap-dance key is released first, then it is a single TAP
-        return SINGLE_TAP;
-    } else {
-        if (!state->pressed)
             return SINGLE_TAP;
-        else
-            return SINGLE_HOLD;
+        } else {
+            if (!state->pressed) {
+                return SINGLE_TAP;
+            } else {
+                return SINGLE_HOLD;
+            }
         }
-    }
-    //If count = 2, and it has been interrupted - assume that user is trying to type the letter associated
-    //  with single tap.
-    else if (state->count == 2) {
-        if (state->interrupted)
-            return DOUBLE_SINGLE_TAP;   //key is tapped twice, but interrupted right after
-        else if (state->pressed)
+
+    } else if (state->count == 2) {
+        if (state->interrupted) {
+            return DOUBLE_SINGLE_TAP;   //key is tapped twice, and interrupted right after
+        } else if (state->pressed) {
             return DOUBLE_HOLD;
-    else
-      return DOUBLE_TAP;                //key is tapped twice, but is NOT interrupted
-    }
-    //Again for count = 3
-    else if (state->count == 3) {       //really included for 'p' for choosing order protocols
-        if (state->interrupted)         //  and 'n' for 'not clinically significant'
+        } else {
+            return DOUBLE_TAP;          //key is tapped twice, but is NOT interrupted
+        }
+
+    } else if (state->count == 3) {     //really included for 'p' for choosing order protocols
+        if (state->interrupted) {       //  and 'n' for 'not clinically significant'
             return TRIPLE_SINGLE_TAP;
-        else if (state->pressed)
+        } else if (state->pressed) {
             return TRIPLE_HOLD;
-    else
-        return TRIPLE_TAP;
-    }
-    //And again for count = 4
-    else if (state->count == 4) {
-        if (state->interrupted)
+        } else {
+            return TRIPLE_TAP;
+        }
+
+    } else if (state->count == 4) {
+        if (state->interrupted) {
             return QUAD_SINGLE_TAP;
-        else if (state->pressed)
+        } else if (state->pressed) {
             return QUAD_HOLD;
-    else
-        return QUAD_HOLD;
+        } else {
+            return QUAD_HOLD;
+        }
+
+    } else {
+        return 12;  //return n+1 where n is your number of tap dance states
     }
-    else
-        return 12;                      //return n+1 where n is your number of tap dance states
 };
 
-static xtap atap_state = {
+static tap atap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -188,7 +185,7 @@ void a_reset (qk_tap_dance_state_t *state, void *user_data) {
     atap_state.state = 0;
 };
 
-static xtap ctap_state = {
+static tap ctap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -233,7 +230,7 @@ void c_reset (qk_tap_dance_state_t *state, void *user_data) {
     ctap_state.state = 0;
 };
 
-static xtap dtap_state = {
+static tap dtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -285,7 +282,7 @@ void d_reset (qk_tap_dance_state_t *state, void *user_data) {
     dtap_state.state = 0;
 };
 
-static xtap etap_state = {
+static tap etap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -323,7 +320,7 @@ void e_reset (qk_tap_dance_state_t *state, void *user_data) {
     etap_state.state = 0;
 };
 
-static xtap ftap_state = {
+static tap ftap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -365,7 +362,7 @@ void f_reset (qk_tap_dance_state_t *state, void *user_data) {
     ftap_state.state = 0;
 };
 
-static xtap htap_state = {
+static tap htap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -402,7 +399,7 @@ void h_reset (qk_tap_dance_state_t *state, void *user_data) {
     htap_state.state = 0;
 };
 
-static xtap mtap_state = {
+static tap mtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -440,7 +437,7 @@ void m_reset (qk_tap_dance_state_t *state, void *user_data) {
     mtap_state.state = 0;
 };
 
-static xtap minstap_state = {
+static tap minstap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -461,7 +458,7 @@ void mins_reset (qk_tap_dance_state_t *state, void *user_data) {
     minstap_state.state = 0;
 };
 
-static xtap ntap_state = {
+static tap ntap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -501,7 +498,7 @@ void n_reset (qk_tap_dance_state_t *state, void *user_data) {
     ntap_state.state = 0;
 };
 
-static xtap otap_state = {
+static tap otap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -539,7 +536,7 @@ void o_reset (qk_tap_dance_state_t *state, void *user_data) {
     otap_state.state = 0;
 };
 
-static xtap ptap_state = {
+static tap ptap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -614,7 +611,7 @@ void p_reset (qk_tap_dance_state_t *state, void *user_data) {
     ptap_state.state = 0;
 };
 
-static xtap plustap_state = {
+static tap plustap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -638,7 +635,7 @@ void plus_reset (qk_tap_dance_state_t *state, void *user_data) {
     plustap_state.state = 0;
 };
 
-static xtap qtap_state = {
+static tap qtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -667,7 +664,7 @@ void q_reset (qk_tap_dance_state_t *state, void *user_data) {
     qtap_state.state = 0;
 };
 
-static xtap rtap_state = {
+static tap rtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -718,8 +715,8 @@ void r_reset (qk_tap_dance_state_t *state, void *user_data) {
     rtap_state.state = 0;
 };
 
-//Instance 'xtap' for the S/Alt+S tap dance
-static xtap stap_state = {
+//Instance 'tap' for the S/Alt+S tap dance
+static tap stap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -757,8 +754,8 @@ void s_reset (qk_tap_dance_state_t *state, void *user_data) {
     stap_state.state = 0;
 };
 
-//Instance 'xtap' for the T/Alt+T tap dance
-static xtap ttap_state = {
+//Instance 'tap' for the T/Alt+T tap dance
+static tap ttap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -793,7 +790,7 @@ void t_reset (qk_tap_dance_state_t *state, void *user_data) {
     ttap_state.state = 0;
 };
 
-static xtap utap_state = {
+static tap utap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -831,7 +828,7 @@ void u_reset (qk_tap_dance_state_t *state, void *user_data) {
     utap_state.state = 0;
 };
 
-static xtap vtap_state = {
+static tap vtap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -906,7 +903,7 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
     vtap_state.state = 0;
 };
 
-static xtap wktap_state = {
+static tap wktap_state = {
     .is_press_action = true,
     .state = 0
 };
@@ -934,7 +931,7 @@ void wk_reset (qk_tap_dance_state_t *state, void *user_data) {
     wktap_state.state = 0;
 };
 
-static xtap xtap_state = {
+static tap xtap_state = {
     .is_press_action = true,
     .state = 0
 };
