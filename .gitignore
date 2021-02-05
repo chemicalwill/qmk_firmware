@@ -78,3 +78,4 @@ __pycache__
 # Allow to exist but don't include it in the repo
 user_song_list.h
 keyboards/cannonkeys/ortho48/keymaps/chemicalwill/ortho48_chemicalwill_workspace.code-workspace
+*.code-workspace
