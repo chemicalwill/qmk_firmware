@@ -22,6 +22,8 @@ enum layers {
 #define LS_CAPS LSFT_T(KC_CAPS)
 #define RS_ENTER RSFT_T(KC_ENTER)
 
+#define ALT_F4 LALT(KC_F4)
+
 #include "work_macros.c"
 #include "work_tap_dances.c"
 #include "encoder.c"
@@ -30,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* WORK
     * ,-----------------------------------------------------------------------------------.
-    * | Esc  |Q uvom|   W  |E altE|R dcdc|T altT|   Y  |U altU|   I  |O altO|P labl| Bksp |
+    * | AltF4|Q uvom|   W  |E altE|R dcdc|T altT|   Y  |U altU|   I  |O altO|P labl| Bksp |
     * |------+------+------+------+------+-------------+------+------+------+------+------|
     * | Tab  |A altA|S altS| D TD |F fent|   G  |H prod|   J  |   K  |   L  |   ;  |   "  |
     * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -40,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * `-----------------------------------------------------------------------------------'
     */
     [_WORK] = LAYOUT_ortho_4x12(
-        KC_ESC,  Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
+        ALT_F4,  Q_UVOM,  KC_W,    E_ALTE,   R_REHABDC, T_ALTT,  KC_Y,     U_ALTU,  KC_I,    O_ALTO,  P_0LABL, KC_BSPC,
         KC_TAB,  A_ALTA,  S_ALTS,  D_MACROS, F_FENT,    KC_G,    H_HMPROD, KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
         LS_CAPS, KC_Z,    X_COMMS, KC_C,     V_PROF,    KC_B,    N_NOTSIG, M_ALTM,  KC_COMM, KC_DOT,  KC_UP,   RS_ENTER,
         KC_LCTL, WK_META, KC_LALT, OS_CODE,  LOWER,     KC_SPC,  KC_SPC,   RAISE,   FN_F5,   KC_LEFT, KC_DOWN, KC_RGHT
