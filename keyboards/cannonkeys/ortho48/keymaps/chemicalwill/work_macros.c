@@ -4,6 +4,8 @@ enum custom_keycodes {
     EMAIL,
     ENTTGM,
     MNL,
+    OTHER,
+    RESCUE,
     TPN,
 };
 
@@ -62,7 +64,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode ENTTGM is released
             }
             break;
-
+            
         case MNL:
             if (record->event.pressed) {
                 // when keycode MNL is pressed
@@ -80,7 +82,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // when keycode MNL is released
             }
             break;
-
+            
+        case OTHER:
+            if (record->event.pressed) {
+                // when keycode OTHER is pressed
+                tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+                SEND_STRING("other");
+                tap_code(KC_TAB);
+            } else {
+                // when keycode OTHER is released
+            }
+            break;
+            
+        case RESCUE:
+            if (record->event.pressed) {
+                // when keycode RESCUE is pressed
+                SEND_STRING("po5004");
+                tap_code(KC_ENTER);
+            } else {
+                // when keycode RESCUE is released
+            }
+            break;
+            
         case TPN:
             if (record->event.pressed) {
                 // when keycode TPN is pressed
