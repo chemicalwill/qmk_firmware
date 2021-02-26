@@ -7,6 +7,7 @@ enum custom_keycodes {
     OTHER,
     RESCUE,
     TPN,
+    VANCTR
 };
 
 /* here's a cool-ass example:
@@ -30,44 +31,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case BASE_QW:
             if (record->event.pressed) {
-                // when keycode BASE_QW is pressed
                 set_single_persistent_default_layer(_QWERTY);
             } else {
-                // when keycode BASE_QW is released
             }
             break;
 
         case BASE_TD:
             if (record->event.pressed) {
-                // when keycode BASE_TD is pressed
                 set_single_persistent_default_layer(_WORK);
             } else {
-                // when keycode BASE_TD is released
             }
             break;
 
         case EMAIL:
             if (record->event.pressed) {
-                // when keycode EMAIL is pressed
                 SEND_STRING("william.hedges@ascension.org");
             } else {
-                // when keycode EMAIL is released
             }
             break;
 
         case ENTTGM:
             if (record->event.pressed) {
-                // when keycode ENTTGM is pressed
                 tap_code(KC_ENTER);
                 layer_invert(_META);
             } else {
-                // when keycode ENTTGM is released
             }
             break;
-            
+
         case MNL:
             if (record->event.pressed) {
-                // when keycode MNL is pressed
                 tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
                 tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
                 tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
@@ -79,38 +71,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 tap_code(KC_DOWN);
                 tap_code16(A(KC_O));
             } else {
-                // when keycode MNL is released
             }
             break;
-            
+
         case OTHER:
             if (record->event.pressed) {
-                // when keycode OTHER is pressed
                 tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
                 SEND_STRING("other");
                 tap_code(KC_TAB);
             } else {
-                // when keycode OTHER is released
             }
             break;
-            
+
         case RESCUE:
             if (record->event.pressed) {
-                // when keycode RESCUE is pressed
                 SEND_STRING("po5004");
                 tap_code(KC_ENTER);
             } else {
-                // when keycode RESCUE is released
             }
             break;
-            
+
         case TPN:
             if (record->event.pressed) {
-                // when keycode TPN is pressed
                 SEND_STRING("t\t1600\tt+\t1559");
                 SEND_STRING("\t\t\t\t" SS_LCTL("ax") SS_LSFT("\t\t") SS_LCTL("v") "\t\t\t\t\tw\t");
             } else {
-                // when keycode TPN is released
+            }
+            break;
+
+        case VANCTR:
+            if (record->event.pressed) {
+                SEND_STRING("Please draw prior to TIME dose and hold dose until trough results and addressed by pharmacy. Thank you!")
+            } else {
             }
             break;
 
