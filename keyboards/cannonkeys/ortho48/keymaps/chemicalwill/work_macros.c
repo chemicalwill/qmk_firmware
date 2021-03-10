@@ -6,8 +6,7 @@ enum custom_keycodes {
     MNL,
     OTHER,
     RESCUE,
-    TPN,
-    VANCTR
+    TROUGH
 };
 
 /* here's a cool-ass example:
@@ -91,15 +90,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case TPN:
-            if (record->event.pressed) {
-                SEND_STRING("t\t1600\tt+\t1559");
-                SEND_STRING("\t\t\t\t" SS_LCTL("ax") SS_LSFT("\t\t") SS_LCTL("v") "\t\t\t\t\tw\t");
-            } else {
-            }
-            break;
-
-        case VANCTR:
+        case TROUGH:
             if (record->event.pressed) {
                 SEND_STRING("Please draw prior to TIME dose and hold dose until trough results and addressed by pharmacy. Thank you!");
             } else {
