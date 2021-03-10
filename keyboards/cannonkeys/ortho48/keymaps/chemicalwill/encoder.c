@@ -5,7 +5,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
     switch(get_highest_layer(layer_state | default_layer_state)) {
 
-        case _WORK:
+        case _RAISE:
             if (clockwise) {
                     if (!is_alt_tab_active) {
                         is_alt_tab_active = true;
@@ -13,7 +13,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                     }
                     alt_tab_timer = timer_read();
                     tap_code(KC_TAB);
-            } else { // if counterclockwise
+            } else {
                 if (!is_alt_tab_active) {
                     is_alt_tab_active = true;
                     register_code(KC_LALT);
@@ -29,15 +29,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
             break;
 
-        case _QWERTY:
-            if (clockwise) {
-                tap_code(KC_VOLU);
-            } else {
-                tap_code(KC_VOLD);
-            }
-            break;
-
-        case _RAISE:
+        case _FN:
             if (clockwise) {
                 tap_code16(C(KC_TAB));
             } else {
@@ -45,14 +37,13 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
             break;
 
-        case _FN:
+        default:
             if (clockwise) {
-                tap_code(KC_MS_WH_DOWN);
+                tap_code(KC_VOLU);
             } else {
-                tap_code(KC_MS_WH_UP);
+                tap_code(KC_VOLD);
             }
             break;
-
     }
 };
 

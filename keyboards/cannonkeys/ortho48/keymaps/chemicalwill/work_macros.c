@@ -101,7 +101,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case VANCTR:
             if (record->event.pressed) {
-                SEND_STRING("Please draw prior to TIME dose and hold dose until trough results and addressed by pharmacy. Thank you!")
+                SEND_STRING("Please draw prior to TIME dose and hold dose until trough results and addressed by pharmacy. Thank you!");
             } else {
             }
             break;
