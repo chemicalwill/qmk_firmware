@@ -35,6 +35,7 @@ enum {
     T_ALTT,
     U_ALTU,
     V_PROF,
+    W_ALTW,
     WK_META,
     X_COMMS
 };
@@ -97,6 +98,9 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void wk_finished (qk_tap_dance_state_t *state, void *user_data);
 void wk_reset (qk_tap_dance_state_t *state, void *user_data);
+
+void w_finished (qk_tap_dance_state_t *state, void *user_data);
+void w_reset (qk_tap_dance_state_t *state, void *user_data);
 
 void x_finished (qk_tap_dance_state_t *state, void *user_data);
 void x_reset (qk_tap_dance_state_t *state, void *user_data);
@@ -903,6 +907,31 @@ void v_reset (qk_tap_dance_state_t *state, void *user_data) {
     vtap_state.state = 0;
 };
 
+static tap wtap_state = {
+    .is_press_action = true,
+    .state = 0
+};
+void w_finished (qk_tap_dance_state_t *state, void *user_data) {
+    wtap_state.state = cur_dance(state);
+    switch (wtap_state.state) {
+        case SINGLE_TAP:
+            register_code(KC_W);
+            break;
+        case SINGLE_HOLD:
+            tap_code16(A(KC_W));
+            break;
+    }
+};
+void w_reset (qk_tap_dance_state_t *state, void *user_data) {
+    switch (wtap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_W);
+            break;
+    }
+    wtap_state.state = 0;
+};
+
+
 static tap wktap_state = {
     .is_press_action = true,
     .state = 0
@@ -995,6 +1024,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [T_ALTT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, t_finished, t_reset),
     [U_ALTU] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, u_finished, u_reset),
     [V_PROF] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, v_finished, v_reset),
+    [W_ALTW] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, w_finished, w_reset),
     [WK_META] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, wk_finished, wk_reset),
     [X_COMMS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset),
 };
@@ -1016,5 +1046,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define T_ALTT TD(T_ALTT)
 #define U_ALTU TD(U_ALTU)
 #define V_PROF TD(V_PROF)
+#define W_ALTW TD(W_ALTW)
 #define WK_META TD(WK_META)
 #define X_COMMS TD(X_COMMS)
