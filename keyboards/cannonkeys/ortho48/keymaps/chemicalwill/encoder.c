@@ -5,7 +5,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
 
     switch(get_highest_layer(layer_state | default_layer_state)) {
 
-        case _RAISE:
+        case _WORK:
             if (clockwise) {
                     if (!is_alt_tab_active) {
                         is_alt_tab_active = true;
@@ -29,7 +29,7 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             }
             break;
 
-        case _FN:
+        case _RAISE:
             if (clockwise) {
                 tap_code16(C(KC_TAB));
             } else {
