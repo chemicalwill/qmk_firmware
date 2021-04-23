@@ -1,0 +1,1 @@
+sudo apt install gcc-arm-none-eabi && gcc-avr && avrdude && dfu-programmer && dfu-util
