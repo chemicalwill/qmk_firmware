@@ -1,12 +1,14 @@
 enum custom_keycodes {
     BASE_QW = SAFE_RANGE,
     BASE_TD,
+    BNDRYL,
     EMAIL,
     ENTTGM,
     MNL,
     OTHER,
     RESCUE,
-    TROUGH
+    TROUGH,
+    ZOFRAN,
 };
 
 /* here's a cool-ass example:
@@ -38,6 +40,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case BASE_TD:
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_WORK);
+            } else {
+            }
+            break;
+
+        case BNDRYL:
+            if (record->event.pressed) {
+                SEND_STRING("For fever, chills, hypotension, or other hypersensitivity reactions:\n");
+                SEND_STRING("1) Stop infliximab-dyyb (Inflectra) infusion\n");
+                SEND_STRING("2) Administer diphenydramine (Benadryl) 25 mg IV\n");
+                SEND_STRING("3) Notify physician\n");
             } else {
             }
             break;
@@ -97,6 +109,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
+        case ZOFRAN:
+            if (record->event.pressed) {
+                tap_code(KC_TAB); tap_code(KC_TAB);
+                tap_code(KC_D);
+                tap_code16(A(KC_D));
+                tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB); tap_code(KC_TAB);
+                tap_code(KC_ENTER);
+                tap_code16(S(KC_TAB)); tap_code16(S(KC_TAB)); tap_code16(S(KC_TAB));
+                tap_code(KC_UP);
+                tap_code(KC_TAB); tap_code(KC_TAB);
+                tap_code(KC_DOWN);
+                tap_code16(A(KC_M));
+                tap_code16(A(KC_O));
+            } else {
+            }
+            break;
         }
     return true;
 };
