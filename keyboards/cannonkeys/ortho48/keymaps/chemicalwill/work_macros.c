@@ -46,10 +46,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case BNDRYL:
             if (record->event.pressed) {
-                SEND_STRING("For fever, chills, hypotension, or other hypersensitivity reactions:\n");
-                SEND_STRING("1) Stop infliximab-dyyb (Inflectra) infusion\n");
-                SEND_STRING("2) Administer diphenydramine (Benadryl) 25 mg IV\n");
-                SEND_STRING("3) Notify physician\n");
+                SEND_STRING("For fever, chills, hypotension, or other hypersensitivity reactions: ");
+                SEND_STRING("stop infusion, administer diphenydramine (Benadryl) 25 mg IV, notify physician");
             } else {
             }
             break;
@@ -102,7 +100,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case TROUGH:
             if (record->event.pressed) {
-                SEND_STRING("Please draw prior to TIME dose and hold dose until trough results and addressed by pharmacy. Thank you!");
+                SEND_STRING("Please draw prior to TIME dose and HOLD DOSE until level results and addressed by pharmacy. Thank you!");
             } else {
             }
             break;
